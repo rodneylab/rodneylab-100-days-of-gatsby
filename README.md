@@ -1,5 +1,10 @@
 <p align="center">
   <a href="https://rodneylab.com">
+    <img alt="Gatsby" src="https://rodneylab.com/assets/icon.png" width="60" />
+  </a>
+</p>
+<p align="center">
+  <a href="https://rodneylab.com">
     Rodney Lab
   </a>
 </p>
@@ -8,14 +13,14 @@
 </h1>
 
 ## Table of contents
-+ [Features](http://github.com/alxshelepenok/gatsby-starter-lumen#features)
-+ [Web Performance Tests](http://github.com/alxshelepenok/gatsby-starter-lumen#web-performance-tests)
-+ [Quick Start](http://github.com/alxshelepenok/gatsby-starter-lumen#quick-start)
-+ [Deploy with Netlify](http://github.com/alxshelepenok/gatsby-starter-lumen#deploy-with-netlify)
-+ [Folder Structure](http://github.com/alxshelepenok/gatsby-starter-lumen#folder-structure)
-+ [Sponsors](http://github.com/alxshelepenok/gatsby-starter-lumen#sponsors)
-+ [Contributors](http://github.com/alxshelepenok/gatsby-starter-lumen#contributors)
-+ [License](http://github.com/alxshelepenok/gatsby-starter-lumen#license)
++ [Features](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#features)
++ [Web Performance Tests](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#web-performance-tests)
++ [Quick Start](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#quick-start)
++ [Deploy with Netlify](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#deploy-with-netlify)
++ [Folder Structure](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#folder-structure)
++ [Sponsors](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#sponsors)
++ [Contributors](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#contributors)
++ [License](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#license)
 
 ## Features
 + Accessible
@@ -23,7 +28,7 @@
 + Uses new File System Route API
 
 ## Web Performance Tests
-+ Lighthouse Report - Scores 91 on Preformance, Accessibility, Best Practices and SEO.
++ Lighthouse Report - Scores 100 on Preformance, Accessibility and Best Practices.  Hosting on Gatsby Cloud Free, a _x-robots-tag: none_ which causes the SEO score to drop from 100 to 91.
 
 ## Quick Start
 
@@ -53,11 +58,14 @@ Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is
 
 Open the `blog` directory in your code editor of choice and edit `src/templates/index-template.js`. Save your changes and the browser will update in real time!
 
+## Deploy to Gatsby Cloud
+Gatsby Cloud is a platform of stable, trusted tools launched by the team behind Gatsby.js.  See < aria-label="Open instructions on setting up a Gatsby site on Gatsby Cloud" a href="https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/deploying-to-gatsby-cloud/" target="_blank" rel="nofollow noopener noreferrer">instrcutions on setting up a Gatsby Cloud deploy</a>.
+
 ## Deploy with Netlify
 
 [Netlify](https://netlify.com) CMS can run in any frontend web environment, but the quickest way to try it out is by running it on a pre-configured starter site with Netlify. Use the button below to build and deploy your own copy of the repository:
 
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/alxshelepenok/gatsby-starter-lumen" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/rodneylab/rodneylab-100-days-of-gatsby" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
 After clicking that button, you’ll authenticate with GitHub and choose a repository name. Netlify will then automatically create a repository in your GitHub account with a copy of the files from the template. Next, it will build and deploy the new site on Netlify, bringing you to the site dashboard when the build is complete. Next, you’ll need to set up Netlify’s Identity service to authorize users to log in to the CMS.
 
