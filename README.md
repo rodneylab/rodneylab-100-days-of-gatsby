@@ -1,15 +1,10 @@
 <p align="center">
-  <a href="https://rodneylab.com">
+  <a aria-label="Open Rodney Lab site" href="https://rodneylab.com" rel="nofollow noopener noreferrer">
     <img alt="Gatsby" src="https://rodneylab.com/assets/icon.png" width="60" />
   </a>
 </p>
-<p align="center">
-  <a href="https://rodneylab.com">
-    Rodney Lab
-  </a>
-</p>
 <h1 align="center">
-  gatsby-netlify-blog starter
+  rodneylab-100-days-of-gatsby
 </h1>
 
 ## Table of contents
@@ -24,11 +19,11 @@
 
 ## Features
 + Accessible
-+ Uses Contentful
-+ Uses new File System Route API
++ Fast
++ Built as part of <a aria-label="Open 100 Days of Gatsby Challenge" href="https://www.gatsbyjs.com/blog/100days-challenge-1/" target="_blank" rel="nofollow noopener noreferrer">100 Days of Gatsby Challenge 2021</a>.
 
 ## Web Performance Tests
-+ Lighthouse Report - Scores 100 on Preformance, Accessibility and Best Practices.  Hosting on Gatsby Cloud Free, a _x-robots-tag: none_ which causes the SEO score to drop from 100 to 91.
++ Lighthouse Report - Scores 100 on Performance, Accessibility and Best Practices.  Hosting on Gatsby Cloud Free, a _x-robots-tag: none_ header is served.  This causes the SEO score to drop from 100 to 91.
 
 ## Quick Start
 
@@ -59,7 +54,7 @@ Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is
 Open the `blog` directory in your code editor of choice and edit `src/templates/index-template.js`. Save your changes and the browser will update in real time!
 
 ## Deploy to Gatsby Cloud
-Gatsby Cloud is a platform of stable, trusted tools launched by the team behind Gatsby.js.  See < aria-label="Open instructions on setting up a Gatsby site on Gatsby Cloud" a href="https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/deploying-to-gatsby-cloud/" target="_blank" rel="nofollow noopener noreferrer">instrcutions on setting up a Gatsby Cloud deploy</a>.
+Gatsby Cloud is a platform of stable, trusted tools launched by the team behind Gatsby.js.  See <a aria-label="Open instructions on setting up a Gatsby site on Gatsby Cloud" href="https://www.gatsbyjs.com/docs/how-to/previews-deploys-hosting/deploying-to-gatsby-cloud/" target="_blank" rel="nofollow noopener noreferrer">instrcutions on setting up a Gatsby Cloud deploy</a>.
 
 ## Deploy with Netlify
 
