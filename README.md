@@ -1,48 +1,127 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://rodneylab.com">
+    Rodney Lab
   </a>
 </p>
 <h1 align="center">
-  Gatsby minimal starter
+  gatsby-netlify-blog starter
 </h1>
 
-## 🚀 Quick start
+## Table of contents
++ [Features](http://github.com/alxshelepenok/gatsby-starter-lumen#features)
++ [Web Performance Tests](http://github.com/alxshelepenok/gatsby-starter-lumen#web-performance-tests)
++ [Quick Start](http://github.com/alxshelepenok/gatsby-starter-lumen#quick-start)
++ [Deploy with Netlify](http://github.com/alxshelepenok/gatsby-starter-lumen#deploy-with-netlify)
++ [Folder Structure](http://github.com/alxshelepenok/gatsby-starter-lumen#folder-structure)
++ [Sponsors](http://github.com/alxshelepenok/gatsby-starter-lumen#sponsors)
++ [Contributors](http://github.com/alxshelepenok/gatsby-starter-lumen#contributors)
++ [License](http://github.com/alxshelepenok/gatsby-starter-lumen#license)
 
-1.  **Create a Gatsby site.**
+## Features
++ Accessible
++ Uses Contentful
++ Uses new File System Route API
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Web Performance Tests
++ Lighthouse Report - Scores 91 on Preformance, Accessibility, Best Practices and SEO.
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## Quick Start
 
-2.  **Start developing.**
+#### Create a Gatsby site
 
-    Navigate into your new site’s directory and start it up.
+Use the Gatsby CLI to create a new site, specifying the Lumen starter.
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+```sh
+# Create a new Gatsby site using this repo
+gatsby new blog https://github.com/rodneylab/rodneylab-100-days-of-gatsby
+```
 
-3.  **Open the code and start customizing!**
+#### Start Developing
 
-    Your site is now running at http://localhost:8000!
+Navigate into your new site’s directory and start it up.
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+```sh
+cd blog
+gatsby develop
+```
 
-4.  **Learn more**
+#### Open the source code and start editing!
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Your site is now running at `http://localhost:8000`!
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+Open the `blog` directory in your code editor of choice and edit `src/templates/index-template.js`. Save your changes and the browser will update in real time!
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## Deploy with Netlify
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+[Netlify](https://netlify.com) CMS can run in any frontend web environment, but the quickest way to try it out is by running it on a pre-configured starter site with Netlify. Use the button below to build and deploy your own copy of the repository:
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/alxshelepenok/gatsby-starter-lumen" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+
+After clicking that button, you’ll authenticate with GitHub and choose a repository name. Netlify will then automatically create a repository in your GitHub account with a copy of the files from the template. Next, it will build and deploy the new site on Netlify, bringing you to the site dashboard when the build is complete. Next, you’ll need to set up Netlify’s Identity service to authorize users to log in to the CMS.
+
+## Deploy to Github Pages
+
+To deploy to github pages, simply do the following:
+
+- Ensure that your `package.json` file correctly reflects where this repo lives
+- Change the `pathPrefix` in your `config.js`
+- Run the standard deploy command
+
+```sh
+yarn deploy
+```
+
+
+#### Access Locally
+```
+$ git clone https://github.com/[GITHUB_USERNAME]/[REPO_NAME].git
+$ cd [REPO_NAME]
+$ yarn
+$ yarn develop
+```
+To test the CMS locally, you'll need run a production build of the site:
+```
+$ yarn build
+$ gatsby serve
+```
+
+## Folder Structure
+
+```
+└── src
+    ├── components
+    │   ├── Emoji
+    │   ├── Footer
+    │   ├── Header
+    │   ├── Layout
+    │   └── PageHeader
+    ├── constants
+    ├── pages
+    ├── templates
+    └── utils
+```
+
+## License
+The MIT License (MIT)
+
+Copyright (c) 2021 Rodney Johnson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
