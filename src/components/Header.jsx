@@ -26,6 +26,16 @@ ListLink.propTypes = {
   isDesktop: PropTypes.bool,
 };
 
+const sortLocation = (a, b) => {
+  if (a.city < b.city) {
+    return -1;
+  }
+  if (a.city > b.city) {
+    return 1;
+  }
+  return 0;
+};
+
 export const PureHeader = ({ data }) => {
   const isDesktop = useMediaQuery(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
 
@@ -45,7 +55,7 @@ export const PureHeader = ({ data }) => {
           </ListLink>
           <li>
             <ul>
-              {data.allContentfulLocation.nodes.map((location) => {
+              {data.allContentfulLocation.nodes.sort(sortLocation).map((location) => {
                 const { city, slug } = location;
                 return (
                   <ListLink
