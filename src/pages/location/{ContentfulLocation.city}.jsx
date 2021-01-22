@@ -2,16 +2,21 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
-import Footer from '../../components/Footer';
-import { PureHeader as Header } from '../../components/Header';
+import Layout from '../../components/Layout';
+import { PurePageHeader as PageHeader } from '../../components/PageHeader';
 
-const LocationTemplate = ({ data }) => (
-  <>
-    <Header data={data} />
-    <h1>{`AudioC0RE in ${data.contentfulLocation.city}`}</h1>
-    <Footer />
-  </>
-);
+const LocationTemplate = ({ data }) => {
+  const { city } = data.contentfulLocation;
+
+  return (
+    <>
+      <PageHeader data={data} pageTitle={city} />
+      <Layout data={data}>
+        <h1>{`AudioC0RE in ${city}`}</h1>
+      </Layout>
+    </>
+  );
+};
 
 LocationTemplate.propTypes = {
   data: PropTypes.shape({
@@ -31,6 +36,9 @@ LocationTemplate.propTypes = {
 
 export const query = graphql`
   query LocationTemplateQuery($id: String) {
+    site {
+      ...PageHeaderFragment
+    }
     contentfulLocation(id: { eq: $id }) {
       city
     }

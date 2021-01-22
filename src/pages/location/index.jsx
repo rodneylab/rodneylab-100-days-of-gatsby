@@ -3,11 +3,15 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import { PureLayout as Layout } from '../../components/Layout';
+import { PurePageHeader as PageHeader } from '../../components/PageHeader';
 
 const Location = ({ data }) => (
-  <Layout data={data}>
-    <h1>Locations</h1>
-  </Layout>
+  <>
+    <PageHeader data={data} pageTitle="Locations" />
+    <Layout data={data}>
+      <h1>Locations</h1>
+    </Layout>
+  </>
 );
 
 Location.propTypes = {
@@ -25,6 +29,9 @@ Location.propTypes = {
 
 export const query = graphql`
   query LocationQuery {
+    site {
+      ...PageHeaderFragment
+    }
     allContentfulLocation {
       ...HeaderFragment
     }
