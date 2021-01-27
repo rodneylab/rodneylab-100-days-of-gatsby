@@ -1,6 +1,6 @@
-describe('/home accessibility checks', () => {
+describe('/location/london accessibility checks', () => {
   it('passes accessibility checks', () => {
-    cy.visit('/home');
+    cy.visit('/location/london');
     cy.injectAxe();
     cy.log('Page header is rendered');
     cy.findByRole('heading', { name: /AudioC0RE - headphones sharing/i }).should('be.visible');
@@ -8,8 +8,8 @@ describe('/home accessibility checks', () => {
   });
 });
 
-describe('/home', () => {
+describe('/location/london', () => {
   it('successfully loads', () => {
-    cy.visit('/home');
+    cy.visit('/location/london');
   });
 });
