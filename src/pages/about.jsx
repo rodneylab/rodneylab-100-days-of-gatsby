@@ -9,7 +9,9 @@ const About = ({ data }) => (
   <>
     <PageHeader data={data} pageTitle="About" />
     <Layout data={data}>
-      <h1>About</h1>
+      <main>
+        <h1>About</h1>
+      </main>
     </Layout>
   </>
 );

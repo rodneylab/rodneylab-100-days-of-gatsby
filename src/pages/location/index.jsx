@@ -9,7 +9,9 @@ const Location = ({ data }) => (
   <>
     <PageHeader data={data} pageTitle="Locations" />
     <Layout data={data}>
-      <h1>Locations</h1>
+      <main>
+        <h1>Locations</h1>
+      </main>
     </Layout>
   </>
 );

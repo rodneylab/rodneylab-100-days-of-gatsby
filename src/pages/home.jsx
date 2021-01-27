@@ -9,7 +9,9 @@ const Home = ({ data }) => (
   <>
     <PageHeader data={data} pageTitle="Home" />
     <Layout data={data}>
-      <h1>Home</h1>
+      <main>
+        <h1>Home</h1>
+      </main>
     </Layout>
   </>
 );
