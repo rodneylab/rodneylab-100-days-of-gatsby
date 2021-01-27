@@ -1,26 +1,26 @@
 import React from 'react';
 
+import { ExternalLink } from './Link';
+
 const Footer = () => (
   <footer>
     Page created by
     {' '}
-    <a
-      aria-label="Open Rodney Lab contact page"
-      href="https://rodneylab.com/contact"
-      rel="noopener"
-    >
-      Rodney Lab
-    </a>
+    <ExternalLink
+      ariaLabel="Open Rodney Lab contact page"
+      to="https://rodneylab.com/contact"
+      text="Rodney Lab"
+      targetBlank={false}
+    />
     {' '}
     as part of
     {' '}
-    <a
-      aria-label="See Rodney Lab post on the challenge"
-      href="https://rodneylab.com/100-days-of-gatsby-code-2021/"
-      rel="nopener"
-    >
-      100 Days of Gatsby Code 2021
-    </a>
+    <ExternalLink
+      ariaLabel="See Rodney Lab post on the challenge"
+      to="https://rodneylab.com/100-days-of-gatsby-code-2021/"
+      text="100 Days of Gatsby Code 2021"
+      targetBlank={false}
+    />
     .
   </footer>
 );

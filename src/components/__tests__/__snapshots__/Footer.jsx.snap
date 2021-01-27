@@ -6,18 +6,64 @@ exports[`ConfusedFaceEmoji renders correctly 1`] = `
     Page created by 
     <a
       aria-label="Open Rodney Lab contact page"
+      class="chakra-link css-0"
       href="https://rodneylab.com/contact"
       rel="noopener"
     >
-      Rodney Lab
+      Rodney Lab 
+      <svg
+        class="chakra-icon css-onkibi"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="2"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <path
+            d="M15 3h6v6"
+          />
+          <path
+            d="M10 14L21 3"
+          />
+        </g>
+      </svg>
     </a>
      as part of 
     <a
-      aria-label="See Rodney Lab post on the challenge"
+      aria-label="Open Rodney Lab contact page"
+      class="chakra-link css-0"
       href="https://rodneylab.com/100-days-of-gatsby-code-2021/"
-      rel="nopener"
+      rel="noopener"
     >
-      100 Days of Gatsby Code 2021
+      100 Days of Gatsby Code 2021 
+      <svg
+        class="chakra-icon css-onkibi"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <g
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-width="2"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <path
+            d="M15 3h6v6"
+          />
+          <path
+            d="M10 14L21 3"
+          />
+        </g>
+      </svg>
     </a>
     .
   </footer>

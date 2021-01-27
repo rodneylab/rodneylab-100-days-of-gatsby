@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
+import { Heading } from '@chakra-ui/react';
 import { PureLayout as Layout } from '../components/Layout';
 import { PurePageHeader as PageHeader } from '../components/PageHeader';
 
@@ -10,7 +11,7 @@ const Home = ({ data }) => (
     <PageHeader data={data} pageTitle="Home" />
     <Layout data={data}>
       <main>
-        <h1>Home</h1>
+        <Heading>Home</Heading>
       </main>
     </Layout>
   </>
