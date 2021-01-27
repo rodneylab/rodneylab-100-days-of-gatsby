@@ -3,3 +3,5 @@ node_modules/
 public
 .env.development
 .env.production
+cypress/integration/examples/
+cypress/fixtures/example.json

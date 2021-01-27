@@ -18,4 +18,12 @@
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-}
+  on('task', {
+    table(message) {
+      // eslint-disable-next-line no-console
+      console.table(message);
+      return null;
+    },
+  });
+  return config;
+};
