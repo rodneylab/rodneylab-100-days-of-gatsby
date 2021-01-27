@@ -9,6 +9,15 @@ const fonts = {
     '"IBM Plex Mono", SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
 };
 
-const theme = extendTheme({ fonts });
+const components = {
+  Link: {
+    baseStyle: {
+      textDecoration: 'underline',
+      color: 'blue.700',
+    },
+  },
+};
+
+const theme = extendTheme({ components, fonts });
 
 export default theme;

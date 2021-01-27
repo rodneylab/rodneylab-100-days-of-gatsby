@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`External Link renders correctly 1`] = `
+<DocumentFragment>
+  <a
+    aria-label="aria-label text"
+    class="chakra-link css-0"
+    href="https://www.test-site.com"
+    rel="nofollow noopener noreferrer"
+    target="_blank"
+  >
+    test site link 
+    <svg
+      class="chakra-icon css-onkibi"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="2"
+      >
+        <path
+          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+        />
+        <path
+          d="M15 3h6v6"
+        />
+        <path
+          d="M10 14L21 3"
+        />
+      </g>
+    </svg>
+  </a>
+</DocumentFragment>
+`;
+
+exports[`External Link renders correctly with targetBlank false passed in 1`] = `
+<DocumentFragment>
+  <a
+    aria-label="Open Rodney Lab contact page"
+    class="chakra-link css-0"
+    href="https://www.test-site.com"
+    rel="noopener"
+  >
+    test site link 
+    <svg
+      class="chakra-icon css-onkibi"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-width="2"
+      >
+        <path
+          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+        />
+        <path
+          d="M15 3h6v6"
+        />
+        <path
+          d="M10 14L21 3"
+        />
+      </g>
+    </svg>
+  </a>
+</DocumentFragment>
+`;
