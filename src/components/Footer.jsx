@@ -7,7 +7,7 @@ const Footer = () => (
     <a
       aria-label="Open Rodney Lab contact page"
       href="https://rodneylab.com/contact"
-      rel="nofollow noopener noreferrer"
+      rel="noopener"
     >
       Rodney Lab
     </a>
@@ -17,7 +17,7 @@ const Footer = () => (
     <a
       aria-label="See Rodney Lab post on the challenge"
       href="https://rodneylab.com/100-days-of-gatsby-code-2021/"
-      rel="nofollow nopener noreferrer"
+      rel="nopener"
     >
       100 Days of Gatsby Code 2021
     </a>
