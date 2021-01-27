@@ -27,7 +27,7 @@ module.exports = {
         downloadLocal: true,
       },
     },
-    'gatsby-plugin-sass',
+    '@chakra-ui/gatsby-plugin',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
