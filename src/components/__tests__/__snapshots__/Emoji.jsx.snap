@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfusedFaceEmoji renders correctly 1`] = `
+<DocumentFragment>
+  <span
+    aria-label="confused face"
+    role="img"
+  >
+    😕
+  </span>
+</DocumentFragment>
+`;

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<DocumentFragment>
+  <h1>
+    Test heading
+  </h1>
+  <p>
+    Test body
+  </p>
+</DocumentFragment>
+`;

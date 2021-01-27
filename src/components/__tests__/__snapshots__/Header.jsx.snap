@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<DocumentFragment>
+  <header>
+    <h1>
+      AudioC0RE - headphones sharing
+    </h1>
+    <nav>
+      <ul>
+        <li
+          style="padding: 15px 0px;"
+        >
+          <a
+            aria-label="Open Home page"
+            href="/home"
+          >
+            Home
+          </a>
+        </li>
+        <li
+          style="padding: 15px 0px;"
+        >
+          <a
+            aria-label="Open About page"
+            href="/about"
+          >
+            About
+          </a>
+        </li>
+        <li
+          style="padding: 15px 0px;"
+        >
+          <a
+            aria-label="Open Location page"
+            href="/location"
+          >
+            Locations:
+          </a>
+        </li>
+        <li>
+          <ul>
+            <li
+              style="padding: 15px 0px;"
+            >
+              <a
+                aria-label="Open Cape Town location page"
+                href="/location/cape-town"
+              >
+                Cape Town
+              </a>
+            </li>
+            <li
+              style="padding: 15px 0px;"
+            >
+              <a
+                aria-label="Open London location page"
+                href="/location/london"
+              >
+                London
+              </a>
+            </li>
+            <li
+              style="padding: 15px 0px;"
+            >
+              <a
+                aria-label="Open Rio de Janeiro location page"
+                href="/location/rio-de-janeiro"
+              >
+                Rio de Janeiro
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</DocumentFragment>
+`;

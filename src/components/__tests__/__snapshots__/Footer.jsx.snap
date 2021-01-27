@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfusedFaceEmoji renders correctly 1`] = `
+<DocumentFragment>
+  <footer>
+    Page created by 
+    <a
+      aria-label="Open Rodney Lab contact page"
+      href="https://rodneylab.com/contact"
+      rel="noopener"
+    >
+      Rodney Lab
+    </a>
+     as part of 
+    <a
+      aria-label="See Rodney Lab post on the challenge"
+      href="https://rodneylab.com/100-days-of-gatsby-code-2021/"
+      rel="nopener"
+    >
+      100 Days of Gatsby Code 2021
+    </a>
+    .
+  </footer>
+</DocumentFragment>
+`;
