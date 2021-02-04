@@ -3,7 +3,7 @@ describe('/location/london accessibility checks', () => {
     cy.visit('/location/london');
     cy.injectAxe();
     cy.log('Page header is rendered');
-    cy.findByRole('heading', { name: /AudioC0RE - headphones sharing/i }).should('be.visible');
+    cy.findByRole('heading', { name: /AudioC0RE in London/i }).should('be.visible');
     cy.checkAccessibility();
   });
 });

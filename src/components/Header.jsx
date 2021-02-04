@@ -1,30 +1,32 @@
 import React from 'react';
-import { Box, Heading } from '@chakra-ui/react';
+import {
+  Box, Flex, Heading, Spacer, Text,
+} from '@chakra-ui/react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import { DESKTOP_BREAKPOINT } from '../constants/sizes';
 import { useMediaQuery } from '../hooks';
 
-const ListLink = ({
-  ariaLabel, to, children: listLinkChildren, isDesktop,
+const NavLink = ({
+  ariaLabel, to, children: navLinkChildren, p,
 }) => (
-  <li style={isDesktop ? {} : { padding: '15px 0px' }}>
+  <Box ml={4} pr={p}>
     <Link aria-label={ariaLabel} to={to}>
-      {listLinkChildren}
+      {navLinkChildren}
     </Link>
-  </li>
+  </Box>
 );
 
-ListLink.defaultProps = {
-  isDesktop: false,
+NavLink.defaultProps = {
+  p: 0,
 };
 
-ListLink.propTypes = {
+NavLink.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-  isDesktop: PropTypes.bool,
+  p: PropTypes.string,
 };
 
 const sortLocation = (a, b) => {
@@ -41,42 +43,32 @@ export const PureHeader = ({ data }) => {
   const isDesktop = useMediaQuery(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
 
   return (
-    <header>
-      {/* <Box bg="blue.800" color="yellow.500"> */}
-      <Box bg="blue.700" color="white">
-        <Heading>AudioC0RE - headphones sharing</Heading>
-        <nav>
-          <ul>
-            <ListLink ariaLabel="Open Home page" to="/home" isDesktop={isDesktop}>
-              Home
-            </ListLink>
-            <ListLink ariaLabel="Open About page" to="/about" isDesktop={isDesktop}>
-              About
-            </ListLink>
-            <ListLink ariaLabel="Open Location page" to="/location" isDesktop={isDesktop}>
-              Locations:
-            </ListLink>
-            <li>
-              <ul>
-                {data.allContentfulLocation.nodes.sort(sortLocation).map((location) => {
-                  const { city, slug } = location;
-                  return (
-                    <ListLink
-                      ariaLabel={`Open ${city} location page`}
-                      to={`/location/${slug}`}
-                      key={slug}
-                      isDesktop={isDesktop}
-                    >
-                      {city}
-                    </ListLink>
-                  );
-                })}
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </Box>
-    </header>
+    <Flex as="header" color="white" w="100%" maxW="6xl" align="baseline">
+      <Flex>
+        <Link aria-label="Open Audio Core home page" to="/">
+          <Heading size="xl" p="4">AudioC0RE</Heading>
+        </Link>
+      </Flex>
+      <Spacer />
+      <Flex>
+        <NavLink ariaLabel="Find out about Audio Link" to="/about" p={8}>
+          <Text textStyle="headerNavItem">About</Text>
+        </NavLink>
+        {data.allContentfulLocation.nodes.sort(sortLocation).map((location) => {
+          const { city, slug } = location;
+          return (
+            <NavLink
+              ariaLabel={`Open ${city} location page`}
+              to={`/location/${slug}`}
+              key={slug}
+              isDesktop={isDesktop}
+            >
+              <Text textStyle="headerNavItem">{city}</Text>
+            </NavLink>
+          );
+        })}
+      </Flex>
+    </Flex>
   );
 };
 

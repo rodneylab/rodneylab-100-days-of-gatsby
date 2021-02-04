@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { graphql, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 
@@ -8,22 +8,29 @@ import { PureHeader as Header } from './Header';
 
 export const PureLayout = ({ children, data }) => (
   <Flex flexDirection="column">
-    <Box w="100%">
-      <Header data={data} w="100%" />
-    </Box>
-    <Flex
-      bg="yellow.500"
-      color="blue.500"
-      align="center"
-      justify={{ base: 'center', md: 'space-around', xl: 'space-between' }}
-      minH="100vh"
-      w="100%"
-    >
-      {children}
+    <Flex bg="blue.700" justify="center">
+      <Flex maxW="6xl" w="100%">
+        <Header data={data} />
+      </Flex>
     </Flex>
-    <Box w="100%">
-      <Footer />
-    </Box>
+    <Flex bg="yellow.500" justify="center" w="100%">
+      <Flex
+        flexDirection="column"
+        bg="yellow.500"
+        color="blue.500"
+        align="center"
+        justify="start"
+        minH="90vh"
+        maxW="6xl"
+      >
+        {children}
+      </Flex>
+    </Flex>
+    <Flex w="100%" bg="blue.800" justify="center">
+      <Flex bg="blue.800" color="white" maxW="6xl" w="100%">
+        <Footer />
+      </Flex>
+    </Flex>
   </Flex>
 );
 

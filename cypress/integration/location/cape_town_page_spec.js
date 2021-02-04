@@ -3,7 +3,7 @@ describe('/location/cape-town accessibility checks', () => {
     cy.visit('/location/cape-town');
     cy.injectAxe();
     cy.log('Page header is rendered');
-    cy.findByRole('heading', { name: /AudioC0RE - headphones sharing/i }).should('be.visible');
+    cy.findByRole('heading', { name: /AudioC0RE in Cape Town/i }).should('be.visible');
     cy.checkAccessibility();
   });
 });

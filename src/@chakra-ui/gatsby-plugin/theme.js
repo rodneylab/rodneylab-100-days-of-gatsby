@@ -93,7 +93,7 @@ const fontSizes = {
   sm: '0.8rem',
   md: '1rem',
   lg: '1.25rem',
-  xl: '1.563',
+  xl: '1.563rem',
   '2xl': '1.953rem',
   '3xl': '2.441rem',
   '4xl': '3.052rem',
@@ -103,8 +103,16 @@ const fontSizes = {
   '8xl': '7.451rem',
   '9xl': '9.313rem',
 };
+
+const textStyles = {
+  headerNavItem: {
+    fontSize: 'xl',
+    fontFamily: 'heading',
+  },
+};
+
 const theme = extendTheme({
-  colors, components, fonts, fontSizes,
+  colors, components, fonts, fontSizes, textStyles,
 });
 
 export default theme;
