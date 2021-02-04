@@ -1,5 +1,5 @@
 <p align="center">
-  <a aria-label="Open Rodney Lab site" href="https://rodneylab.com" rel="nofollow noopener noreferrer">
+  <a aria-label="Open Rodney Lab site" href="https://rodneylab.com" rel="noopener">
     <img alt="Gatsby" src="https://rodneylab.com/assets/icon.png" width="60" />
   </a>
 </p>
