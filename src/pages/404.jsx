@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 import { ConfusedFaceEmoji } from '../components/Emoji';
@@ -11,13 +12,13 @@ export const PurePageNotFound = ({ data }) => (
   <>
     <PageHeader data={data} pageTitle="Page not Found" />
     <Layout data={data}>
-      <h1>
+      <Heading as="h1" size="4xl">
         Not sure that page exists
         {' '}
         <ConfusedFaceEmoji />
         {' '}
         {H_ELLIPSIS_ENTITY}
-      </h1>
+      </Heading>
       <p>
         Go to
         {' '}

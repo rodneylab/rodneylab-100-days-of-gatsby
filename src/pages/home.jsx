@@ -12,7 +12,7 @@ const Home = ({ data }) => (
     <PageHeader data={data} pageTitle="Home" />
     <Layout data={data}>
       <main>
-        <Heading>Home</Heading>
+        <Heading as="h1" size="4xl">Home</Heading>
         <ExternalLink
           ariaLabel="Open Rodney Lab contact page"
           to="https://rodneylab.com/contact"

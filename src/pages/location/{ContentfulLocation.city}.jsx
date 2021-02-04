@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 import Layout from '../../components/Layout';
@@ -13,7 +14,9 @@ const LocationTemplate = ({ data }) => {
       <PageHeader data={data} pageTitle={city} />
       <Layout data={data}>
         <main>
-          <h1>{`AudioC0RE in ${city}`}</h1>
+          <Heading as="h1" size="4xl">
+            {`AudioC0RE in ${city}`}
+          </Heading>
         </main>
       </Layout>
     </>

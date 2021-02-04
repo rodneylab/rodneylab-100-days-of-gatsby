@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import { Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 import { PureLayout as Layout } from '../../components/Layout';
@@ -10,7 +11,7 @@ const Location = ({ data }) => (
     <PageHeader data={data} pageTitle="Locations" />
     <Layout data={data}>
       <main>
-        <h1>Locations</h1>
+        <Heading as="h1" size="4xl">Locations</Heading>
       </main>
     </Layout>
   </>

@@ -83,11 +83,28 @@ const fonts = {
   heading:
     '"Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   body:
-    '"Gentium Book Basic", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+    '"Gentium Book Basic", serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
   mono:
     '"IBM Plex Mono", SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
 };
 
-const theme = extendTheme({ colors, components, fonts });
+const fontSizes = {
+  xs: '0.64rem',
+  sm: '0.8rem',
+  md: '1rem',
+  lg: '1.25rem',
+  xl: '1.563',
+  '2xl': '1.953rem',
+  '3xl': '2.441rem',
+  '4xl': '3.052rem',
+  '5xl': '3.815rem',
+  '6xl': '4.768rem',
+  '7xl': '5.96rem',
+  '8xl': '7.451rem',
+  '9xl': '9.313rem',
+};
+const theme = extendTheme({
+  colors, components, fonts, fontSizes,
+});
 
 export default theme;
