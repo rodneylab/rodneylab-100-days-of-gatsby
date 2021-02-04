@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box, Heading } from '@chakra-ui/react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 
@@ -41,37 +42,40 @@ export const PureHeader = ({ data }) => {
 
   return (
     <header>
-      <h1>AudioC0RE - headphones sharing</h1>
-      <nav>
-        <ul>
-          <ListLink ariaLabel="Open Home page" to="/home" isDesktop={isDesktop}>
-            Home
-          </ListLink>
-          <ListLink ariaLabel="Open About page" to="/about" isDesktop={isDesktop}>
-            About
-          </ListLink>
-          <ListLink ariaLabel="Open Location page" to="/location" isDesktop={isDesktop}>
-            Locations:
-          </ListLink>
-          <li>
-            <ul>
-              {data.allContentfulLocation.nodes.sort(sortLocation).map((location) => {
-                const { city, slug } = location;
-                return (
-                  <ListLink
-                    ariaLabel={`Open ${city} location page`}
-                    to={`/location/${slug}`}
-                    key={slug}
-                    isDesktop={isDesktop}
-                  >
-                    {city}
-                  </ListLink>
-                );
-              })}
-            </ul>
-          </li>
-        </ul>
-      </nav>
+      {/* <Box bg="blue.800" color="yellow.500"> */}
+      <Box bg="blue.700" color="white">
+        <Heading>AudioC0RE - headphones sharing</Heading>
+        <nav>
+          <ul>
+            <ListLink ariaLabel="Open Home page" to="/home" isDesktop={isDesktop}>
+              Home
+            </ListLink>
+            <ListLink ariaLabel="Open About page" to="/about" isDesktop={isDesktop}>
+              About
+            </ListLink>
+            <ListLink ariaLabel="Open Location page" to="/location" isDesktop={isDesktop}>
+              Locations:
+            </ListLink>
+            <li>
+              <ul>
+                {data.allContentfulLocation.nodes.sort(sortLocation).map((location) => {
+                  const { city, slug } = location;
+                  return (
+                    <ListLink
+                      ariaLabel={`Open ${city} location page`}
+                      to={`/location/${slug}`}
+                      key={slug}
+                      isDesktop={isDesktop}
+                    >
+                      {city}
+                    </ListLink>
+                  );
+                })}
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </Box>
     </header>
   );
 };
