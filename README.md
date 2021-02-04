@@ -13,8 +13,6 @@
 + [Quick Start](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#quick-start)
 + [Deploy with Netlify](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#deploy-with-netlify)
 + [Folder Structure](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#folder-structure)
-+ [Sponsors](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#sponsors)
-+ [Contributors](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#contributors)
 + [License](http://github.com/rodneylab/rodneylab-100-days-of-gatsby#license)
 
 ## Features
