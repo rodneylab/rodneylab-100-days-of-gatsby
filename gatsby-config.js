@@ -35,7 +35,27 @@ module.exports = {
       },
     },
     'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          placeholder: 'tracedSVG',
+          formats: ['auto', 'webp', 'avif'],
+          quality: 100,
+          avifOptions: { lossless: true, quality: 100, speed: 0 },
+          jpgOptions: { quality: 100, progressive: true },
+          pngOptions: { quality: 100, compressionSpeed: 1 },
+          webpOptions: { quality: 100 },
+          tracedSVGOptions: {
+            color: '#fcd600',
+            background: '#022d5f',
+          },
+        },
+        defaultQuality: 100,
+        stripMetadata: false,
+        useMozJpeg: true,
+      },
+    },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-offline',

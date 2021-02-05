@@ -20,7 +20,7 @@ export const PureLayout = ({ children, data }) => (
         color="blue.500"
         align="center"
         justify="start"
-        minH="90vh"
+        minH="67vh"
         maxW="6xl"
       >
         {children}

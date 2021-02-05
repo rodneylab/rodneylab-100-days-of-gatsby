@@ -133,7 +133,6 @@ export const PureHeader = ({ data }) => {
                     ariaLabel={`Open ${city} location page`}
                     to={`/location/${slug}`}
                     key={slug}
-                    isDesktop={isDesktop}
                   >
                     <MenuItem>
                       <Text textStyle="menuNavItem">{city}</Text>

@@ -89,6 +89,15 @@ const components = {
       footer: {
         color: 'pink.200',
       },
+      footerNavItem: {
+        color: 'yellow.500',
+        textUnderlineOffset: '0.25rem',
+        _hover: {
+          color: 'yellow.500',
+          textUnderlineOffset: '0.5rem',
+        },
+
+      },
       header: {
         color: 'white',
         _hover: {
@@ -149,6 +158,19 @@ const fontSizes = {
 };
 
 const textStyles = {
+  footerNavHeader: {
+    color: 'yellow.500',
+    fontFamily: 'heading',
+    fontSize: 'md',
+    fontWeight: '600',
+    mb: '1',
+  },
+  footerNavItem: {
+    color: 'yellow.500',
+    fontFamily: 'heading',
+    fontSize: 'md',
+    mb: '1',
+  },
   menuNavItem: {
     color: 'pink.100',
     fontSize: 'xl',
