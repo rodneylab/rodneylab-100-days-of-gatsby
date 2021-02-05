@@ -87,13 +87,16 @@ const components = {
     },
     variants: {
       footer: {
-        color: 'pink.200',
+        color: 'yellow.500',
+        _hover: {
+          color: 'pink.200',
+        },
       },
       footerNavItem: {
         color: 'yellow.500',
         textUnderlineOffset: '0.25rem',
         _hover: {
-          color: 'yellow.500',
+          color: 'pink.200',
           textUnderlineOffset: '0.5rem',
         },
 
@@ -166,7 +169,6 @@ const textStyles = {
     mb: '1',
   },
   footerNavItem: {
-    color: 'yellow.500',
     fontFamily: 'heading',
     fontSize: 'md',
     mb: '1',

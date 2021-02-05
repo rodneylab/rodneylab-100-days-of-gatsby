@@ -72,17 +72,7 @@ const Footer = () => (
     </Flex>
     <Flex mt="8" mb="4">
       <Text>
-        Page created by
-        {' '}
-        <ExternalLink
-          ariaLabel="Open Rodney Lab contact page"
-          to="https://rodneylab.com/contact"
-          text="Rodney Lab"
-          targetBlank={false}
-          variant="footer"
-        />
-        {' '}
-        as part of
+        Page created as part of
         {' '}
         <ExternalLink
           ariaLabel="See Rodney Lab post on the challenge"
