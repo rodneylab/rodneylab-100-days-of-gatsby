@@ -3,6 +3,7 @@ import { Box, Grid, Heading } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
+import AudioCore from '../components/Brand';
 import { ExternalLink } from '../components/Link';
 import { PureLayout as Layout } from '../components/Layout';
 import { PurePageHeader as PageHeader } from '../components/PageHeader';
@@ -12,7 +13,11 @@ const Home = ({ data }) => (
     <PageHeader data={data} pageTitle="Home" />
     <Layout data={data}>
       <main>
-        <Heading as="h1" size="4xl">AudioC0RE &mdash; headphones sharing</Heading>
+        <Heading as="h1" size="4xl">
+          <AudioCore />
+          {' '}
+          &mdash; headphones sharing
+        </Heading>
         <ExternalLink
           ariaLabel="Open Rodney Lab contact page"
           to="https://rodneylab.com/contact"

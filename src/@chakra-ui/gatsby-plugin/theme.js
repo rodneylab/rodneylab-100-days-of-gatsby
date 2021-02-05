@@ -1,4 +1,13 @@
 import { extendTheme } from '@chakra-ui/react';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
+
+const breakpoints = createBreakpoints({
+  sm: '30em', // 480 px
+  md: '48em', // 768 px
+  lg: '62em', // 992 px
+  xl: '80em', // 1280 px
+  '2xl': '96em', // 1536 px
+});
 
 const colors = {
   //   /* CSV */
@@ -69,8 +78,27 @@ const components = {
       footer: {
         color: 'pink.200',
       },
+      header: {
+        color: 'white',
+        _hover: {
+          color: 'pink.100',
+          textUnderlineOffset: '0.5rem',
+        },
+        textDecoration: 'none',
+      },
+      headerActive: {
+        color: 'white',
+        textDecoration: 'underline',
+        textUnderlineOffset: '0.5rem',
+        _hover: {
+          color: 'pink.100',
+        },
+      },
       main: {
         color: 'blue.800',
+      },
+      logo: {
+        textDecoration: 'none',
       },
     },
   },
@@ -105,14 +133,26 @@ const fontSizes = {
 };
 
 const textStyles = {
+  menuNavItem: {
+    color: 'pink.100',
+    fontSize: 'xl',
+    fontFamily: 'heading',
+    fontWeight: 600,
+  },
   headerNavItem: {
     fontSize: 'xl',
     fontFamily: 'heading',
+    fontWeight: 600,
   },
 };
 
 const theme = extendTheme({
-  colors, components, fonts, fontSizes, textStyles,
+  breakpoints,
+  colors,
+  components,
+  fonts,
+  fontSizes,
+  textStyles,
 });
 
 export default theme;

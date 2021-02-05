@@ -1,20 +1,43 @@
 import React from 'react';
 import {
-  Box, Flex, Heading, Spacer, Text,
+  Box,
+  Flex,
+  Heading,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuGroup,
+  MenuItem,
+  MenuList,
+  Spacer,
+  Text,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
+import { HamburgerIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 
+import AudioCore from './Brand';
+import { InternalLink } from './Link';
 import { DESKTOP_BREAKPOINT } from '../constants/sizes';
-import { useMediaQuery } from '../hooks';
+
+const HeaderLogo = () => (
+  <Flex>
+    <InternalLink aria-label="Open Audio Core home page" to="/" variant="header">
+      <Heading size="xl">
+        <AudioCore />
+      </Heading>
+    </InternalLink>
+  </Flex>
+);
 
 const NavLink = ({
   ariaLabel, to, children: navLinkChildren, p,
 }) => (
   <Box ml={4} pr={p}>
-    <Link aria-label={ariaLabel} to={to}>
+    <InternalLink as="GatsbyLink" aria-label={ariaLabel} to={to} variant="header">
       {navLinkChildren}
-    </Link>
+    </InternalLink>
   </Box>
 );
 
@@ -40,33 +63,93 @@ const sortLocation = (a, b) => {
 };
 
 export const PureHeader = ({ data }) => {
-  const isDesktop = useMediaQuery(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
+  const [isDesktop] = useMediaQuery(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
 
+  if (isDesktop) {
+    return (
+      <Flex as="header" color="white" w="100%" maxW="6xl" align="baseline" ml="4" mr="4">
+        <HeaderLogo />
+        <Spacer />
+        <Flex>
+          <NavLink ariaLabel="Find out about Audio Link" to="/about" p="8">
+            <Text textStyle="headerNavItem">About</Text>
+          </NavLink>
+          {data.allContentfulLocation.nodes.sort(sortLocation).map((location) => {
+            const { city, slug } = location;
+            return (
+              <NavLink
+                ariaLabel={`Open ${city} location page`}
+                to={`/location/${slug}`}
+                key={slug}
+                isDesktop={isDesktop}
+              >
+                <Text textStyle="headerNavItem">{city}</Text>
+              </NavLink>
+            );
+          })}
+        </Flex>
+      </Flex>
+    );
+  }
   return (
-    <Flex as="header" color="white" w="100%" maxW="6xl" align="baseline">
+    <Flex
+      as="header"
+      color="white"
+      w="100%"
+      maxW={['3xl', '3xl', '3xl', '6xl', '6xl']}
+      align="center"
+      ml={[4, 4, 4, 4, 0]}
+      mr={[4, 4, 4, 4, 0]}
+    >
       <Flex>
         <Link aria-label="Open Audio Core home page" to="/">
-          <Heading size="xl" p="4">AudioC0RE</Heading>
+          <Heading size="xl">
+            <AudioCore />
+          </Heading>
         </Link>
       </Flex>
       <Spacer />
       <Flex>
-        <NavLink ariaLabel="Find out about Audio Link" to="/about" p={8}>
-          <Text textStyle="headerNavItem">About</Text>
-        </NavLink>
-        {data.allContentfulLocation.nodes.sort(sortLocation).map((location) => {
-          const { city, slug } = location;
-          return (
-            <NavLink
-              ariaLabel={`Open ${city} location page`}
-              to={`/location/${slug}`}
-              key={slug}
-              isDesktop={isDesktop}
-            >
-              <Text textStyle="headerNavItem">{city}</Text>
+        <Menu>
+          <MenuButton
+            transition="all 0.2s"
+            _hover={{ color: 'pink.100' }}
+            _expanded={{ color: 'pink.200' }}
+            _focus={{ boxShadow: 'outline' }}
+          >
+            <HamburgerIcon boxSize={12} />
+          </MenuButton>
+          <MenuList minWidth={['320px', '512px', '661px', null, null]} bg="blue.700" borderRadius="0" borderColor="yellow.500">
+            <NavLink ariaLabel="Go to Audio Link Homepage" to="/home" p="8">
+              <MenuItem>
+                <Text textStyle="menuNavItem">Home</Text>
+              </MenuItem>
             </NavLink>
-          );
-        })}
+            <NavLink ariaLabel="Find out about Audio Link" to="/about" p="8">
+              <MenuItem>
+                <Text textStyle="menuNavItem">About</Text>
+              </MenuItem>
+            </NavLink>
+            <MenuDivider bg="yellow.500" />
+            <MenuGroup title="Locations" textStyle="menuNavItem">
+              {data.allContentfulLocation.nodes.sort(sortLocation).map((location) => {
+                const { city, slug } = location;
+                return (
+                  <NavLink
+                    ariaLabel={`Open ${city} location page`}
+                    to={`/location/${slug}`}
+                    key={slug}
+                    isDesktop={isDesktop}
+                  >
+                    <MenuItem>
+                      <Text textStyle="menuNavItem">{city}</Text>
+                    </MenuItem>
+                  </NavLink>
+                );
+              })}
+            </MenuGroup>
+          </MenuList>
+        </Menu>
       </Flex>
     </Flex>
   );

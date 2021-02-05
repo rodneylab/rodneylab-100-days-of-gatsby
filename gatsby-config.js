@@ -34,6 +34,7 @@ module.exports = {
         trackingId: 'abc',
       },
     },
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sitemap',

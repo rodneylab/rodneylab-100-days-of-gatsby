@@ -4,7 +4,7 @@ import { Link, useStyleConfig } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 function CustomLink({
-  ariaLabel, href, target, rel, isExternal, variant,
+  children, ariaLabel, href, target, rel, isExternal, variant,
 }) {
   const styles = useStyleConfig('Link', { variant });
   return (
@@ -15,12 +15,15 @@ function CustomLink({
       target={target}
       rel={rel}
       isExternal={isExternal}
-    />
+    >
+      {children}
+    </Link>
   );
 }
 
 CustomLink.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   href: PropTypes.string.isRequired,
   isExternal: PropTypes.bool.isRequired,
   target: PropTypes.string.isRequired,
@@ -47,7 +50,7 @@ export const ExternalLink = ({
       </CustomLink>
     ) : (
       <CustomLink
-        ariaLabel="Open Rodney Lab contact page"
+        ariaLabel={ariaLabel}
         href={to}
         rel="noopener"
         isExternal={false}
@@ -74,4 +77,21 @@ ExternalLink.propTypes = {
   variant: PropTypes.string,
 };
 
-export { ExternalLink as default };
+export const InternalLink = ({
+  children, ariaLabel, to, variant,
+}) => (
+  <CustomLink ariaLabel={ariaLabel} href={to} variant={variant}>
+    {children}
+  </CustomLink>
+);
+
+InternalLink.defaultProps = {
+  variant: 'main',
+};
+
+InternalLink.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  to: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+};
