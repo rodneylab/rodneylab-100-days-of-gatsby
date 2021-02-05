@@ -18,7 +18,7 @@
 ## Features
 + Accessible
 + Fast
-+ Built as part of <a aria-label="Open 100 Days of Gatsby Challenge" href="https://www.gatsbyjs.com/blog/100days-challenge-1/" target="_blank" rel="nofollow noopener noreferrer">100 Days of Gatsby Challenge 2021</a>.
++ Built as part of <a aria-label="Open 100 Days of Gatsby Challenge" href="https://rodneylab.com/100-days-of-gatsby-code-2021/" rel="noopener">100 Days of Gatsby Challenge 2021</a>.  Live site is at <a aria-label="Open Live rodneylab-100-days-of-gatsby live site" href="https://rodneylab100daysofgatsbymain.gtsb.io/home" rel="noopener">https://rodneylab100daysofgatsbymain.gtsb.io/home</a>.
 
 ## Web Performance Tests
 + Lighthouse Report - Scores 100 on Performance, Accessibility and Best Practices.  Hosting on Gatsby Cloud Free, a _x-robots-tag: none_ header is served.  This causes the SEO score to drop from 100 to 91.
