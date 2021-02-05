@@ -1,9 +1,11 @@
 import React from 'react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { Link as GatsbyLink } from 'gatsby';
 import { Link, useStyleConfig } from '@chakra-ui/react';
+
 import PropTypes from 'prop-types';
 
-function CustomLink({
+function CustomExternalLink({
   children, ariaLabel, href, target, rel, isExternal, variant,
 }) {
   const styles = useStyleConfig('Link', { variant });
@@ -21,7 +23,7 @@ function CustomLink({
   );
 }
 
-CustomLink.propTypes = {
+CustomExternalLink.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   href: PropTypes.string.isRequired,
@@ -31,12 +33,37 @@ CustomLink.propTypes = {
   variant: PropTypes.string.isRequired,
 };
 
+function CustomInternalLink({
+  children, ariaLabel, href, target, variant,
+}) {
+  const styles = useStyleConfig('Link', { variant });
+  return (
+    <Link
+      as={GatsbyLink}
+      sx={styles}
+      aria-label={ariaLabel}
+      target={target}
+      to={href}
+    >
+      {children}
+    </Link>
+  );
+}
+
+CustomInternalLink.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+  href: PropTypes.string.isRequired,
+  target: PropTypes.string.isRequired,
+  variant: PropTypes.string.isRequired,
+};
+
 export const ExternalLink = ({
   ariaLabel, to, targetBlank, text, variant,
 }) => (
   <>
     {targetBlank ? (
-      <CustomLink
+      <CustomExternalLink
         ariaLabel={ariaLabel}
         href={to}
         target="_blank"
@@ -47,9 +74,9 @@ export const ExternalLink = ({
         {text}
         {' '}
         <ExternalLinkIcon />
-      </CustomLink>
+      </CustomExternalLink>
     ) : (
-      <CustomLink
+      <CustomExternalLink
         ariaLabel={ariaLabel}
         href={to}
         rel="noopener"
@@ -59,7 +86,7 @@ export const ExternalLink = ({
         {text}
         {' '}
         <ExternalLinkIcon />
-      </CustomLink>
+      </CustomExternalLink>
     )}
   </>
 );
@@ -80,9 +107,9 @@ ExternalLink.propTypes = {
 export const InternalLink = ({
   children, ariaLabel, to, variant,
 }) => (
-  <CustomLink ariaLabel={ariaLabel} href={to} variant={variant}>
+  <CustomInternalLink ariaLabel={ariaLabel} href={to} variant={variant}>
     {children}
-  </CustomLink>
+  </CustomInternalLink>
 );
 
 InternalLink.defaultProps = {
