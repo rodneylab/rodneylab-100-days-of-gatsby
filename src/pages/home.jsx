@@ -4,7 +4,6 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import AudioCore from '../components/Brand';
-import { ExternalLink } from '../components/Link';
 import { PureLayout as Layout } from '../components/Layout';
 import { PurePageHeader as PageHeader } from '../components/PageHeader';
 
@@ -18,12 +17,6 @@ const Home = ({ data }) => (
           {' '}
           &mdash; headphones sharing
         </Heading>
-        <ExternalLink
-          ariaLabel="Open Rodney Lab contact page"
-          to="https://rodneylab.com/contact"
-          text="Rodney Lab"
-          targetBlank={false}
-        />
         <Box>
           <Grid templateColumns="repeat(5, 1fr)">
             <Box w="100%" h="10" bg="blue.800" color="white">

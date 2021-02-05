@@ -1,5 +1,5 @@
 import { extendTheme } from '@chakra-ui/react';
-import { createBreakpoints } from '@chakra-ui/theme-tools';
+import { createBreakpoints, mode } from '@chakra-ui/theme-tools';
 
 const breakpoints = createBreakpoints({
   sm: '30em', // 480 px
@@ -69,6 +69,17 @@ const colors = {
   },
 };
 
+function baseStyleItem(props) {
+  return {
+    py: '0.4rem',
+    px: '0.8rem',
+    transition: 'background 50ms ease-in 0s',
+    _focus: {
+      bg: mode('blue.800', 'whiteAlpha.900')(props),
+    },
+  };
+}
+
 const components = {
   Link: {
     baseStyle: {
@@ -101,9 +112,14 @@ const components = {
         textDecoration: 'none',
       },
     },
+    defaultProps: {
+      variant: 'main',
+    },
   },
-  defaultProps: {
-    variant: 'main',
+  Menu: {
+    baseStyle: (props) => ({
+      item: baseStyleItem(props),
+    }),
   },
 };
 
@@ -137,7 +153,7 @@ const textStyles = {
     color: 'pink.100',
     fontSize: 'xl',
     fontFamily: 'heading',
-    fontWeight: 600,
+    fontWeight: 400,
   },
   headerNavItem: {
     fontSize: 'xl',

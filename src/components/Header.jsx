@@ -13,7 +13,7 @@ import {
   Text,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import PropTypes from 'prop-types';
 
@@ -24,7 +24,7 @@ import { DESKTOP_BREAKPOINT } from '../constants/sizes';
 const HeaderLogo = () => (
   <Flex>
     <InternalLink aria-label="Open Audio Core home page" to="/" variant="header">
-      <Heading size="xl">
+      <Heading size="xl" my="2">
         <AudioCore />
       </Heading>
     </InternalLink>
@@ -98,16 +98,10 @@ export const PureHeader = ({ data }) => {
       w="100%"
       maxW={['3xl', '3xl', '3xl', '6xl', '6xl']}
       align="center"
-      ml={[4, 4, 4, 4, 0]}
-      mr={[4, 4, 4, 4, 0]}
+      mx={[4, 4, 'auto', 4, 0]}
+      justify="center"
     >
-      <Flex>
-        <Link aria-label="Open Audio Core home page" to="/">
-          <Heading size="xl">
-            <AudioCore />
-          </Heading>
-        </Link>
-      </Flex>
+      <HeaderLogo />
       <Spacer />
       <Flex>
         <Menu>
