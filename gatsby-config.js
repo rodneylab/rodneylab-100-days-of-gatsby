@@ -62,7 +62,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: 'src/images/icon.png',
+        icon: 'src/images/rodneylab-logo.png',
       },
     },
     'gatsby-plugin-mdx',
