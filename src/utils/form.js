@@ -1,4 +1,8 @@
-const validate = (values) => {
+import { createClient } from '@formium/client';
+
+export const formium = createClient(process.env.GATSBY_FORMIUM_PROJECTID);
+
+export const validate = (values) => {
   const errors = {};
   if (!values.name) {
     errors.name = 'Please enter your name.';
@@ -15,5 +19,3 @@ const validate = (values) => {
   }
   return errors;
 };
-
-export { validate as default };

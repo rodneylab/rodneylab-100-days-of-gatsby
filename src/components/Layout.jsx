@@ -21,7 +21,8 @@ export const PureLayout = ({ children, data }) => (
         align="center"
         justify="start"
         minH="67vh"
-        maxW="6xl"
+        maxW={['3xl', '3xl', '3xl', '6xl', '6xl']}
+        w="100%"
       >
         {children}
       </Flex>

@@ -34,7 +34,7 @@ CustomExternalLink.propTypes = {
 };
 
 function CustomInternalLink({
-  children, ariaLabel, href, target, variant,
+  children, ariaLabel, href, variant,
 }) {
   const styles = useStyleConfig('Link', { variant });
   return (
@@ -42,7 +42,6 @@ function CustomInternalLink({
       as={GatsbyLink}
       sx={styles}
       aria-label={ariaLabel}
-      target={target}
       to={href}
     >
       {children}
@@ -54,11 +53,10 @@ CustomInternalLink.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   href: PropTypes.string.isRequired,
-  target: PropTypes.string.isRequired,
   variant: PropTypes.string.isRequired,
 };
 
-export const ExternalLink = ({
+export const ExternalTextLink = ({
   ariaLabel, to, targetBlank, text, variant,
 }) => (
   <>
@@ -79,6 +77,7 @@ export const ExternalLink = ({
       <CustomExternalLink
         ariaLabel={ariaLabel}
         href={to}
+        target=""
         rel="noopener"
         isExternal={false}
         variant={variant}
@@ -91,6 +90,50 @@ export const ExternalLink = ({
   </>
 );
 
+ExternalTextLink.defaultProps = {
+  targetBlank: true,
+  variant: 'main',
+};
+
+ExternalTextLink.propTypes = {
+  ariaLabel: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  targetBlank: PropTypes.bool,
+  text: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+};
+
+export const ExternalLink = ({
+  children, ariaLabel, to, targetBlank, variant,
+}) => (
+  <>
+    {targetBlank ? (
+      <CustomExternalLink
+        ariaLabel={ariaLabel}
+        href={to}
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        isExternal
+        variant={variant}
+      >
+        {children}
+      </CustomExternalLink>
+    ) : (
+      <CustomExternalLink
+        ariaLabel={ariaLabel}
+        href={to}
+        target=""
+        rel="noopener"
+        isExternal={false}
+        variant={variant}
+      >
+        {children}
+        {' '}
+      </CustomExternalLink>
+    )}
+  </>
+);
+
 ExternalLink.defaultProps = {
   targetBlank: true,
   variant: 'main',
@@ -98,9 +141,9 @@ ExternalLink.defaultProps = {
 
 ExternalLink.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   to: PropTypes.string.isRequired,
   targetBlank: PropTypes.bool,
-  text: PropTypes.string.isRequired,
   variant: PropTypes.string,
 };
 

@@ -23,7 +23,7 @@ import { DESKTOP_BREAKPOINT } from '../constants/sizes';
 
 const HeaderLogo = () => (
   <Flex>
-    <InternalLink aria-label="Open Audio Core home page" to="/" variant="header">
+    <InternalLink ariaLabel="Open Audio Core home page" to="/" variant="header">
       <Heading size="xl" my="2">
         <AudioCore />
       </Heading>
@@ -35,14 +35,14 @@ const NavLink = ({
   ariaLabel, to, children: navLinkChildren, p,
 }) => (
   <Box ml={4} pr={p}>
-    <InternalLink as="GatsbyLink" aria-label={ariaLabel} to={to} variant="header">
+    <InternalLink as="GatsbyLink" ariaLabel={ariaLabel} to={to} variant="header">
       {navLinkChildren}
     </InternalLink>
   </Box>
 );
 
 NavLink.defaultProps = {
-  p: 0,
+  p: '0',
 };
 
 NavLink.propTypes = {

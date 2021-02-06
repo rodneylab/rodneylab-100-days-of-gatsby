@@ -2,7 +2,12 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
-const { CONTENTFUL_API_ACCESS_TOKEN, CONTENTFUL_SPACE_ID } = process.env;
+const {
+  CONTENTFUL_API_ACCESS_TOKEN,
+  CONTENTFUL_SPACE_ID,
+  FORMIUM_TOKEN,
+  GATSBY_FORMIUM_PROJECTID,
+} = process.env;
 
 delete process.env.https_proxy;
 delete process.env.HTTPS_PROXY;
@@ -82,6 +87,13 @@ module.exports = {
         path: './src/pages/',
       },
       __key: 'pages',
+    },
+    {
+      resolve: 'gatsby-source-formium',
+      options: {
+        projectId: GATSBY_FORMIUM_PROJECTID,
+        accessToken: FORMIUM_TOKEN,
+      },
     },
   ],
 };

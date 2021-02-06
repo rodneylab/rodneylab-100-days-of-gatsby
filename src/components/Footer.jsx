@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import { StaticImage } from 'gatsby-plugin-image';
 
 import AudioCore from './Brand';
-import { ExternalLink, InternalLink } from './Link';
+import { ExternalTextLink, InternalLink } from './Link';
 
 const NavLink = ({ ariaLabel, to, children: navLinkChildren }) => (
   <Box>
-    <InternalLink as="GatsbyLink" aria-label={ariaLabel} to={to} variant="footerNavItem">
+    <InternalLink as="GatsbyLink" ariaLabel={ariaLabel} to={to} variant="footerNavItem">
       {navLinkChildren}
     </InternalLink>
   </Box>
@@ -24,7 +24,7 @@ NavLink.propTypes = {
 
 const RodneyLabCredit = () => (
   <Flex align="center">
-    <span style={{ 'font-family': 'Lato', 'font-weight': 400 }}>A project by</span>
+    <span style={{ fontFamily: 'Lato', fontWeight: 400 }}>A project by</span>
     {' '}
     <Flex flexDirection="row" align="center" ml="1" mr="1">
       <Link aria-label="Contact Rodney Lab" href="https://rodneylab.com/contact" variant="logo">
@@ -40,7 +40,7 @@ const RodneyLabCredit = () => (
             }}
           />
           {' '}
-          <Flex as="span" ml="1" style={{ 'font-family': 'Lato', 'font-weight': 300 }}>
+          <Flex as="span" ml="1" style={{ fontFamily: 'Lato', fontWeight: 300 }}>
             RODNEY LAB.
           </Flex>
         </Flex>
@@ -74,7 +74,7 @@ const Footer = () => (
       <Text>
         Page created as part of
         {' '}
-        <ExternalLink
+        <ExternalTextLink
           ariaLabel="See Rodney Lab post on the challenge"
           to="https://rodneylab.com/100-days-of-gatsby-code-2021/"
           text="100 Days of Gatsby Code 2021"
