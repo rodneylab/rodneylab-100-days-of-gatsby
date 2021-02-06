@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { graphql } from 'gatsby';
+import React from 'react';
+import { graphql, navigate } from 'gatsby';
 import {
-  Button,
   Flex,
   Grid,
   GridItem,
@@ -9,16 +8,8 @@ import {
   List,
   ListIcon,
   ListItem,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalHeader,
-  ModalOverlay,
   Text,
-  useDisclosure,
 } from '@chakra-ui/react';
-import { Formik, Form } from 'formik';
 import { FormiumForm } from '@formium/react';
 import PropTypes from 'prop-types';
 import {
@@ -30,40 +21,21 @@ import {
 } from 'react-share';
 
 import { ExternalLink } from '../components/Link';
-import FormikErrorFocus from '../components/FormikErrorFocus';
 import { PureLayout as Layout } from '../components/Layout';
 import { PurePageHeader as PageHeader } from '../components/PageHeader';
-import { TextInputField } from '../components/InputField';
-import { formium, validate } from '../utils/form';
+import formiumComponents from '../components/FormiumComponents';
+import { formium } from '../utils/form';
 
-const Contact = ({ pageContext, data }) => {
-  const {
-    isOpen: showThankYouModal,
-    onOpen: onOpenThankYouModal,
-    onClose: onCloseThankYouModal,
-  } = useDisclosure();
-  const [successSubmitted, setSuccessfullySubmitted] = useState(false);
+const Contact = ({ pageContext: { slug }, data }) => {
   const handleSubmit = async (values) => {
-    await formium.submitForm(pageContext.slug, values);
-    setSuccessfullySubmitted(true);
-    onOpenThankYouModal();
-    // alert('Success');
+    await formium.submitForm(slug, values);
+    navigate('/home/', { state: { formSubmitted: true } });
   };
 
   return (
     <>
       <PageHeader data={data} pageTitle="About" />
       <Layout data={data}>
-        <Modal isOpen={false || showThankYouModal} onClose={onCloseThankYouModal}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Message received!</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody mb="4">
-              Thanks for getting in touch. We normally respond within one working day.
-            </ModalBody>
-          </ModalContent>
-        </Modal>
         <Flex direction="column" w="100%" px={[4, 4, 'auto', 4, 0]}>
           <Heading>Work in progress...</Heading>
           <Flex as="main" justify="flex-start" direction="column">
@@ -78,7 +50,9 @@ const Contact = ({ pageContext, data }) => {
                     <ListItem>
                       <Flex align="center">
                         <ListIcon as={() => <EmailIcon size={48} round />} />
-                        <Text color="yellow.500" ml="3">ask@rodneylab.com</Text>
+                        <Text color="yellow.500" ml="3">
+                          ask@rodneylab.com
+                        </Text>
                       </Flex>
                     </ListItem>
                     <ListItem>
@@ -88,7 +62,9 @@ const Contact = ({ pageContext, data }) => {
                       >
                         <Flex align="center">
                           <ListIcon as={() => <TwitterIcon size={48} round />} />
-                          <Text color="yellow.500" ml="3">@askRodney</Text>
+                          <Text color="yellow.500" ml="3">
+                            @askRodney
+                          </Text>
                         </Flex>
                       </ExternalLink>
                     </ListItem>
@@ -99,7 +75,9 @@ const Contact = ({ pageContext, data }) => {
                       >
                         <Flex align="center">
                           <ListIcon as={() => <FacebookMessengerIcon size={48} round />} />
-                          <Text color="yellow.500" ml="3">rodneyLab</Text>
+                          <Text color="yellow.500" ml="3">
+                            rodneyLab
+                          </Text>
                         </Flex>
                       </ExternalLink>
                     </ListItem>
@@ -110,7 +88,9 @@ const Contact = ({ pageContext, data }) => {
                       >
                         <Flex align="center">
                           <ListIcon as={() => <TelegramIcon size={48} round />} />
-                          <Text color="yellow.500" ml="3">askRodney</Text>
+                          <Text color="yellow.500" ml="3">
+                            askRodney
+                          </Text>
                         </Flex>
                       </ExternalLink>
                     </ListItem>
@@ -121,50 +101,20 @@ const Contact = ({ pageContext, data }) => {
                       >
                         <Flex align="center">
                           <ListIcon as={() => <LinkedinIcon size={48} round />} />
-                          <Text color="yellow.500" ml="3">ask-rodney</Text>
+                          <Text color="yellow.500" ml="3">
+                            ask-rodney
+                          </Text>
                         </Flex>
                       </ExternalLink>
                     </ListItem>
                   </List>
                 </Flex>
                 <Flex bg="blue.700" w="100%" align="center" direction="column">
-                  <FormiumForm data={data.formiumForm} onSubmit={handleSubmit} />
-                  <Formik
-                    initialValues={{
-                      name: '',
-                      email: '',
-                      messages: '',
-                    }}
+                  <FormiumForm
+                    data={data.formiumForm}
                     onSubmit={handleSubmit}
-                    validate={validate}
-                  >
-                    {({ isSubmitting }) => (
-                      <FormikErrorFocus>
-                        <Form id="contact-form" name="contact">
-                          <Heading>Write us a message...</Heading>
-                          <TextInputField
-                            isRequired
-                            id="name-contact"
-                            name="name"
-                            placeholder="Name"
-                            label="name"
-                            title="Name"
-                            type="text"
-                          />
-                          <TextInputField
-                            isRequired
-                            id="email-contact"
-                            name="email"
-                            placeholder="Email"
-                            label="email"
-                            title="Email"
-                            type="email"
-                          />
-                          <Button disabled={isSubmitting} />
-                        </Form>
-                      </FormikErrorFocus>
-                    )}
-                  </Formik>
+                    components={formiumComponents}
+                  />
                 </Flex>
               </GridItem>
               <GridItem colSpan={1} />

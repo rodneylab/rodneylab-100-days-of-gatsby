@@ -5,6 +5,7 @@ exports.onCreatePage = async ({ page, actions }) => {
     createPage({
       ...page,
       context: {
+        ...page.context,
         slug: process.env.FORMIUM_CONTACT_FORM_SLUG,
       },
     });
