@@ -60,12 +60,14 @@ const Footer = () => (
       <UnorderedList styleType="none" m="0" p="0">
         <ListItem>
           <NavLink ariaLabel="Find out about Audio Link" to="/about/">
-            <Text textStyle="footerNavItem">About</Text>
+            <Text py="3" textStyle="footerNavItem">
+              About
+            </Text>
           </NavLink>
         </ListItem>
         <ListItem>
           <NavLink ariaLabel="Contact Audio Link" to="/contact/">
-            <Text textStyle="footerNavItem">Contact</Text>
+            <Text py="3" textStyle="footerNavItem">Contact</Text>
           </NavLink>
         </ListItem>
       </UnorderedList>

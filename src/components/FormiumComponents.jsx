@@ -7,6 +7,7 @@ import {
   FormHelperText,
   FormLabel,
   Input,
+  Text,
   Textarea as ChakraTextarea,
 } from '@chakra-ui/react';
 import { defaultComponents } from '@formium/react';
@@ -15,7 +16,7 @@ import { useField } from 'formik';
 
 const SubmitButton = () => (
   <Flex justify="flex-end">
-    <Button mt={4} bg="red.100" type="submit">
+    <Button mt={4} size="lg" type="submit">
       Send
     </Button>
   </Flex>
@@ -34,33 +35,40 @@ const FormControl = ({
 
   return (
     <ChakraFormControl isInvalid={error}>
-      <FormLabel htmlFor="name">{label}</FormLabel>
-      {isTextInput && (
-        <Input
-          focusBorderColor="pink.100"
-          onBlur={onBlur}
-          onChange={onChange}
-          name={name}
-          placeholder={placeholder}
-          required={required}
-          type={type}
-        />
-      )}
-      {isTextarea && (
-        <ChakraTextarea
-          focusBorderColor="pink.100"
-          onBlur={onBlur}
-          onChange={onChange}
-          name={name}
-          placeholder={placeholder}
-          required={required}
-          size="sm"
-          rows={5}
-        />
-      )}
-      {error
-        ? <FormErrorMessage>{error}</FormErrorMessage>
-        : <FormHelperText>{description}</FormHelperText>}
+      <Flex direction="column" w="100%" mb="4">
+        <Text fontWeight="600"><FormLabel htmlFor="name">{label}</FormLabel></Text>
+        {isTextInput && (
+          <Input
+            aria-label={description}
+            focusBorderColor="pink.100"
+            onBlur={onBlur}
+            onChange={onChange}
+            name={name}
+            placeholder={placeholder}
+            required={required}
+            type={type}
+          />
+        )}
+        {isTextarea && (
+          <ChakraTextarea
+            aria-label={description}
+            focusBorderColor="pink.100"
+            onBlur={onBlur}
+            onChange={onChange}
+            name={name}
+            placeholder={placeholder}
+            required={required}
+            size="md"
+            rows={5}
+            resize="none"
+          />
+        )}
+        {error ? (
+          <FormErrorMessage>{error}</FormErrorMessage>
+        ) : (
+          <FormHelperText>{description}</FormHelperText>
+        )}
+      </Flex>
     </ChakraFormControl>
   );
 };
@@ -78,8 +86,11 @@ FormControl.propTypes = {
 
 const formiumComponents = {
   ...defaultComponents,
+  // ElementsWrapper: ({children}) => <Flex direction="column" bg="black">{children}</Flex>,
   FormControl,
+  Header: () => null,
   SubmitButton,
+  // PageWrapper: ({children}) => <Flex bg="white" direction="column" w="100%">{children}</Flex>,
   Textarea: () => <ChakraTextarea />,
 };
 

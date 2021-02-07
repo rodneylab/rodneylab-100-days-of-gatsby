@@ -11,7 +11,7 @@ const Location = ({ data }) => (
     <PageHeader data={data} pageTitle="Locations" />
     <Layout data={data}>
       <main>
-        <Heading as="h1" size="4xl">Locations</Heading>
+        <Heading as="h1" size="xl">Locations</Heading>
       </main>
     </Layout>
   </>

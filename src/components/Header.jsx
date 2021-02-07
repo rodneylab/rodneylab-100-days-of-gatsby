@@ -63,6 +63,7 @@ const sortLocation = (a, b) => {
 };
 
 export const PureHeader = ({ data }) => {
+  // const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState();
   const [isDesktop] = useMediaQuery(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
 
   if (isDesktop) {
@@ -104,8 +105,12 @@ export const PureHeader = ({ data }) => {
       <HeaderLogo />
       <Spacer />
       <Flex>
+        {/* <Menu onOpen={() => setHamburgerMenuOpen(true)}
+        onClose={setHamburgerMenuOpen(false)}> */}
         <Menu>
           <MenuButton
+            // aria-label={hamburgerMenuOpen ? 'Close navigation menu' : ' Open navigation menu'}
+            aria-label="Open/Close navigation menu"
             transition="all 0.2s"
             _hover={{ color: 'pink.100' }}
             _expanded={{ color: 'pink.200' }}
@@ -113,7 +118,12 @@ export const PureHeader = ({ data }) => {
           >
             <HamburgerIcon boxSize={12} />
           </MenuButton>
-          <MenuList minWidth={['320px', '512px', '661px', null, null]} bg="blue.700" borderRadius="0" borderColor="yellow.500">
+          <MenuList
+            minWidth={['320px', '512px', '661px', null, null]}
+            bg="blue.700"
+            borderRadius="0"
+            borderColor="yellow.500"
+          >
             <NavLink ariaLabel="Go to Audio Link Homepage" to="/home" p="8">
               <MenuItem>
                 <Text textStyle="menuNavItem">Home</Text>

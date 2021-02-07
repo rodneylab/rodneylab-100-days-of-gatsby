@@ -14,7 +14,7 @@ const LocationTemplate = ({ data }) => {
       <PageHeader data={data} pageTitle={city} />
       <Layout data={data}>
         <main>
-          <Heading as="h1" size="4xl">
+          <Heading as="h1" size="xl">
             {`AudioC0RE in ${city}`}
           </Heading>
         </main>

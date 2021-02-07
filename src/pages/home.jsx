@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import {
-  Box,
-  Grid,
   Heading,
   Modal,
   ModalBody,
@@ -48,12 +46,12 @@ const Home = ({ data, location }) => {
           </ModalContent>
         </Modal>
         <main>
-          <Heading as="h1" size="4xl">
+          <Heading as="h1" size="xl">
             <AudioCore />
             {' '}
             &mdash; headphones sharing
           </Heading>
-          <Box>
+          {/* <Box>
             <Grid templateColumns="repeat(5, 1fr)">
               <Box w="100%" h="10" bg="blue.800" color="white">
                 blue.800
@@ -71,15 +69,15 @@ const Home = ({ data, location }) => {
                 yellow.500
               </Box>
             </Grid>
-          </Box>
+          </Box> */}
         </main>
       </Layout>
     </>
   );
 };
 
-Home.PropTypes.defaultProps = {
-  location: {},
+Home.defaultProps = {
+  location: { state: { formSubmitted: false } },
 };
 
 Home.propTypes = {

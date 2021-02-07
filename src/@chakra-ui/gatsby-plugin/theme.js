@@ -80,7 +80,82 @@ function baseStyleItem(props) {
   };
 }
 
+// function variantOutline(props) {
+//   const { theme } = props;
+//   const { focusBorderColor: fc, errorBorderColor: ec } = getDefaults(props);
+
+//   return {
+//     field: {
+//       border: '1px solid',
+//       borderColor: 'yellow.500',
+//       bg: 'inherit',
+//       _hover: {
+//         borderColor: mode('gray.300', 'whiteAlpha.400')(props),
+//       },
+//       _readOnly: {
+//         boxShadow: 'none !important',
+//         userSelect: 'all',
+//       },
+//       _disabled: {
+//         opacity: 0.4,
+//         cursor: 'not-allowed',
+//       },
+//       _invalid: {
+//         borderColor: getColor(theme, ec),
+//         boxShadow: `0 0 0 1px ${getColor(theme, ec)}`,
+//       },
+//       _focus: {
+//         zIndex: 1,
+//         borderColor: getColor(theme, fc),
+//         boxShadow: `0 0 0 1px ${getColor(theme, fc)}`,
+//       },
+//     },
+//     addon: {
+//       border: '1px solid',
+//       borderColor: mode('yellow.500', 'whiteAlpha.50')(props),
+//       bg: mode('gray.100', 'whiteAlpha.300')(props),
+//     },
+//   };
+// }
+
 const components = {
+  Button: {
+    baseStyle: {
+      bg: 'blue.700',
+      color: 'yellow.500',
+    },
+    variants: {
+      solid: {
+        bg: 'yellow.500',
+        border: '2px solid',
+        borderColor: 'yellow.500',
+        color: 'blue.700',
+        _hover: {
+          bg: 'blue.700',
+          borderColor: 'yellow.500',
+          color: 'yellow.500',
+        },
+      },
+    },
+  },
+  Form: {
+    baseStyle: {
+      helperText: {
+        color: 'white',
+      },
+    },
+  },
+  Input: {
+    baseStyle: {
+      field: {
+        color: 'pink.200',
+        borderColor: 'yellow.500',
+        _hover: {
+          borderColor: 'yellow.500',
+        },
+      },
+    },
+  },
   Link: {
     baseStyle: {
       textDecoration: 'underline',
@@ -99,7 +174,6 @@ const components = {
           color: 'pink.200',
           textUnderlineOffset: '0.5rem',
         },
-
       },
       header: {
         color: 'white',
@@ -132,6 +206,12 @@ const components = {
     baseStyle: (props) => ({
       item: baseStyleItem(props),
     }),
+  },
+  Textarea: {
+    baseStyle: {
+      color: 'pink.200',
+      borderColor: 'pink.200',
+    },
   },
 };
 

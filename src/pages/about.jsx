@@ -11,7 +11,7 @@ const About = ({ data }) => (
     <PageHeader data={data} pageTitle="About" />
     <Layout data={data}>
       <main>
-        <Heading as="h1" size="4xl">About</Heading>
+        <Heading as="h1" size="xl">About</Heading>
       </main>
     </Layout>
   </>

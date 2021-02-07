@@ -1,14 +1,14 @@
-describe('/about accessibility checks', () => {
+describe('/contact accessibility checks', () => {
   it('passes accessibility checks', () => {
     cy.visit('/contact/');
     cy.injectAxe();
     cy.log('Page header is rendered');
-    cy.findByRole('heading', { name: /Get in touch/i }).should('be.visible');
+    cy.findByRole('heading', { name: /We're waiting for your message…/i }).should('be.visible');
     cy.checkAccessibility();
   });
 });
 
-describe('/about', () => {
+describe('/contact', () => {
   it('successfully loads', () => {
     cy.visit('/contact/');
   });

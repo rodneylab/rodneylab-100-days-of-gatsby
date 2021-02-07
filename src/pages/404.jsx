@@ -12,7 +12,7 @@ export const PurePageNotFound = ({ data }) => (
   <>
     <PageHeader data={data} pageTitle="Page not Found" />
     <Layout data={data}>
-      <Heading as="h1" size="4xl">
+      <Heading as="h1" size="xl">
         Not sure that page exists
         {' '}
         <ConfusedFaceEmoji />
