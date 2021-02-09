@@ -15,11 +15,18 @@ delete process.env.http_proxy;
 delete process.env.HTTP_PROXY;
 // eslint-disable-next-line no-underscore-dangle
 delete process.env._proxy;
+const website = {
+  title: 'rodneylab-100-days-of-gatsby',
+  language: 'en-GB',
+  background_color: '#011946',
+  theme_color: '#fcd600',
+  favicon: 'static/assets/rodneylab-logo.png',
+};
 
 module.exports = {
   siteMetadata: {
-    title: 'rodneylab-100-days-of-gatsby',
-    siteLanguage: 'en-GB',
+    title: website.title,
+    siteLanguage: website.language,
     siteUrl: 'https://rodneylab.com',
   },
   plugins: [
@@ -96,6 +103,22 @@ module.exports = {
         accessToken: FORMIUM_TOKEN,
       },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: website.title,
+        short_name: website.title,
+        start_url: '/',
+        background_color: website.background_color,
+        theme_color: website.theme_color,
+        display: 'standalone',
+        icon: website.favicon,
+        icon_options: {
+          purpose: 'any maskable',
+        },
+      },
+    },
+    'gatsby-plugin-offline',
     'gatsby-plugin-preact',
   ],
 };
