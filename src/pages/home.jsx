@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import {
+  Flex,
   Heading,
   Modal,
   ModalBody,
@@ -13,6 +15,7 @@ import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import AudioCore from '../components/Brand';
+import { H_ELLIPSIS_ENTITY } from '../constants/entities';
 import { PureLayout as Layout } from '../components/Layout';
 import { PurePageHeader as PageHeader } from '../components/PageHeader';
 
@@ -31,6 +34,7 @@ const Home = ({ data, location }) => {
     onOpenThankYouModal();
   }
 
+  const mainImageData = data.mainImage.localFile;
   return (
     <>
       <PageHeader data={data} pageTitle="Home" />
@@ -46,30 +50,20 @@ const Home = ({ data, location }) => {
           </ModalContent>
         </Modal>
         <main>
-          <Heading as="h1" size="xl">
+          <Heading as="h1" size="xl" my="4">
             <AudioCore />
             {' '}
             &mdash; headphones sharing
           </Heading>
-          {/* <Box>
-            <Grid templateColumns="repeat(5, 1fr)">
-              <Box w="100%" h="10" bg="blue.800" color="white">
-                blue.800
-              </Box>
-              <Box w="100%" h="10" bg="blue.700" color="white">
-                blue.700
-              </Box>
-              <Box w="100%" h="10" bg="pink.200" color="white">
-                pink.200
-              </Box>
-              <Box w="100%" h="10" bg="pink.100" color="white">
-                pink.100
-              </Box>
-              <Box w="100%" h="10" bg="yellow.500" color="white">
-                yellow.500
-              </Box>
-            </Grid>
-          </Box> */}
+          <GatsbyImage image={getImage(mainImageData)} alt="Audo core headphones" width={992} />
+          <Flex>
+            <Heading as="h1" size="xl" ml="auto" my="4">
+              {H_ELLIPSIS_ENTITY}
+              share your c
+              <span style={{ fontFamily: 'Fira Code' }}>0</span>
+              re.
+            </Heading>
+          </Flex>
         </main>
       </Layout>
     </>
@@ -90,6 +84,9 @@ Home.propTypes = {
         }),
       ),
     }),
+    mainImage: PropTypes.shape({
+      localFile: PropTypes.shape,
+    }).isRequired,
   }).isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({
@@ -105,6 +102,17 @@ export const query = graphql`
     }
     allContentfulLocation {
       ...HeaderFragment
+    }
+    mainImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      localFile {
+        childImageSharp {
+          gatsbyImageData(
+            width: 992
+            layout: CONSTRAINED
+            sizes: "(max-width: 480px) 480px, (max-width: 768px) 768px, 992px"
+          )
+        }
+      }
     }
   }
 `;

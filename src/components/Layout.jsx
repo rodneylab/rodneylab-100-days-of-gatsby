@@ -17,7 +17,7 @@ export const PureLayout = ({ children, data }) => (
       <Flex
         flexDirection="column"
         bg="yellow.500"
-        color="blue.500"
+        color="blue.700"
         align="center"
         justify="start"
         minH="67vh"

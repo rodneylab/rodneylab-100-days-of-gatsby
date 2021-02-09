@@ -153,8 +153,8 @@ const Contact = ({ pageContext: { slug }, data }) => {
     <>
       <PageHeader data={data} pageTitle="Contact" />
       <Layout data={data}>
-        <Flex direction="column" w="100%" color="yellow.500" px={[4, 4, 'auto', 4, 0]}>
-          <Flex as="main" justify="flex-start" direction="column">
+        <Flex as="main" direction="column" w="100%" color="yellow.500" px={[4, 4, 'auto', 4, 0]}>
+          <Flex justify="flex-start" direction="column">
             <Grid templateColumns="1fr 80% 1fr" templateRows="auto" py="12">
               <GridItem colSpan={1} />
               <GridItem colSpan={1}>

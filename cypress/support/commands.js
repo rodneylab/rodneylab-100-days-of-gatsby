@@ -27,7 +27,9 @@
 function printAccessibilityViolations(violations) {
   cy.task(
     'table',
-    violations.map(({ id, impact, description, nodes }) => ({
+    violations.map(({
+      id, impact, description, nodes,
+    }) => ({
       impact,
       description: `${description} (${id})`,
       nodes: nodes.length,
@@ -35,12 +37,17 @@ function printAccessibilityViolations(violations) {
   );
 }
 
+const sizes = ['iphone-6', 'ipad-2', 'macbook-11'];
+
 Cypress.Commands.add(
   'checkAccessibility',
   {
     prevSubject: 'optional',
   },
   (subject, { skipFailures = false } = {}) => {
-    cy.checkA11y(subject, null, printAccessibilityViolations, skipFailures);
+    sizes.forEach((element) => {
+      cy.viewport(element);
+      cy.checkA11y(subject, null, printAccessibilityViolations, skipFailures);
+    });
   },
 );

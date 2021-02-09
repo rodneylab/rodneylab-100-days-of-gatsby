@@ -266,6 +266,15 @@ const textStyles = {
   },
 };
 
+const styles = {
+  global: {
+    body: {
+      color: 'pink.700',
+      bg: 'green',
+    },
+  },
+};
+
 const theme = extendTheme({
   breakpoints,
   colors,
@@ -273,6 +282,7 @@ const theme = extendTheme({
   fonts,
   fontSizes,
   textStyles,
+  styles,
 });
 
 export default theme;

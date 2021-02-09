@@ -67,7 +67,7 @@ export const PureHeader = ({ data }) => {
 
   if (isDesktop) {
     return (
-      <Flex as="header" color="white" w="100%" maxW="6xl" align="baseline" ml="4" mr="4">
+      <Flex as="header" color="white" w="100%" maxW="6xl" align="baseline" mx="4">
         <HeaderLogo />
         <Spacer />
         <Flex>
