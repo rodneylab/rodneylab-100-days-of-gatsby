@@ -96,5 +96,6 @@ module.exports = {
         accessToken: FORMIUM_TOKEN,
       },
     },
+    'gatsby-plugin-preact',
   ],
 };
