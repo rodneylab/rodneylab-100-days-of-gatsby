@@ -86,11 +86,9 @@ FormControl.propTypes = {
 
 const formiumComponents = {
   ...defaultComponents,
-  // ElementsWrapper: ({children}) => <Flex direction="column" bg="black">{children}</Flex>,
   FormControl,
   Header: () => null,
   SubmitButton,
-  // PageWrapper: ({children}) => <Flex bg="white" direction="column" w="100%">{children}</Flex>,
   Textarea: () => <ChakraTextarea />,
 };
 

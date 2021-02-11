@@ -26,7 +26,7 @@ const RodneyLabCredit = () => (
   <Flex align="center">
     <span style={{ fontFamily: 'Lato', fontWeight: 400 }}>A project by</span>
     {' '}
-    <Flex flexDirection="row" align="center" ml="1" mr="1">
+    <Flex flexDirection="row" align="center" mx="1">
       <Link aria-label="Contact Rodney Lab" href="https://rodneylab.com/contact" variant="logo">
         <Flex align="center">
           <StaticImage
