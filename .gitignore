@@ -5,3 +5,4 @@ public
 .env.production
 cypress/integration/examples/
 cypress/fixtures/example.json
+src/.DS_Store

@@ -16,18 +16,27 @@ delete process.env.HTTP_PROXY;
 // eslint-disable-next-line no-underscore-dangle
 delete process.env._proxy;
 const website = {
-  title: 'rodneylab-100-days-of-gatsby',
+  title: 'AudioC0re',
   language: 'en-GB',
   background_color: '#011946',
   theme_color: '#fcd600',
-  favicon: 'static/assets/rodneylab-logo.png',
+  favicon: 'src/images/rodneylab-logo.png',
+  siteUrl: 'https://rodneylab100daysofgatsbymain.gtsb.io',
 };
 
 module.exports = {
   siteMetadata: {
+    author: 'AudioC0re',
+    authorImage: '/src/images/rodneylab-logo.png',
+    headline: 'Share your core',
+    facebookAppId: '0912345678',
+    facebookAuthorPage: 'askRodneyLab',
+    facebookPage: 'rodneyLab',
+    ogLanguage: 'en_GB',
     title: website.title,
     siteLanguage: website.language,
     siteUrl: 'https://rodneylab.com',
+    twitterUsername: '@rodneylab',
   },
   plugins: [
     {

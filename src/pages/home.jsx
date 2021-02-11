@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image';
 import {
   Flex,
   Heading,
@@ -17,9 +17,9 @@ import PropTypes from 'prop-types';
 import AudioCore from '../components/Brand';
 import { H_ELLIPSIS_ENTITY } from '../constants/entities';
 import { PureLayout as Layout } from '../components/Layout';
-import { PurePageHeader as PageHeader } from '../components/PageHeader';
+import { PureSEO as SEO } from '../components/SEO/SEO';
 
-const Home = ({ data, location }) => {
+export default function Home({ data, location }) {
   const [redirectedFromContactForm, setRedirectedFromContactForm] = useState(
     location?.state?.formSubmitted,
   );
@@ -29,7 +29,42 @@ const Home = ({ data, location }) => {
     onClose: onCloseThankYouModal,
   } = useDisclosure();
 
-  if (redirectedFromContactForm) {
+  const { siteUrl, title } = data.site.siteMetadata;
+
+  const pageMetadata = {
+    faviconImage: {
+      url: getSrc(data.faviconImage),
+      width: 512,
+      height: 512,
+    },
+    featuredImage: {
+      url: getSrc(data.featuredImage.localFile),
+      width: 992,
+      height: 730,
+    },
+    ogImage: {
+      url: data.ogImage ? getSrc(data.ogImage.localFile) : null,
+      width: 1200,
+      height: 627,
+    },
+    ogSquareImage: {
+      url: data.ogSquareImage ? getSrc(data.ogSquareImage.localFile) : null,
+      width: 400,
+      height: 400,
+    },
+    twitterImage: {
+      url: data.twitterImage ? getSrc(data.twitterImage.localFile) : null,
+      width: 800,
+      height: 418,
+    },
+    pageTitle: 'Home',
+    seoMetaDescription:
+      'AudioC0re: headhones sharing... share your core. Try AudioC0re in a city near you.',
+    title,
+    url: `${siteUrl}/home/`,
+  };
+
+  if (false && redirectedFromContactForm) {
     setRedirectedFromContactForm(false);
     onOpenThankYouModal();
   }
@@ -37,7 +72,7 @@ const Home = ({ data, location }) => {
   const mainImageData = data.mainImage.localFile;
   return (
     <>
-      <PageHeader data={data} pageTitle="Home" />
+      <SEO data={data} pageMetadata={pageMetadata} />
       <Layout data={data}>
         <Modal isOpen={false || showThankYouModal} onClose={onCloseThankYouModal}>
           <ModalOverlay />
@@ -53,7 +88,9 @@ const Home = ({ data, location }) => {
           <Heading as="h1" size="xl" my="4">
             <AudioCore />
             {' '}
-            &mdash; headphones sharing
+            &mdash;
+            {' '}
+            headphones sharing
           </Heading>
           <GatsbyImage image={getImage(mainImageData)} alt="Audo core headphones" width={992} />
           <Flex>
@@ -68,7 +105,7 @@ const Home = ({ data, location }) => {
       </Layout>
     </>
   );
-};
+}
 
 Home.defaultProps = {
   location: { state: { formSubmitted: false } },
@@ -76,6 +113,12 @@ Home.defaultProps = {
 
 Home.propTypes = {
   data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string,
+        siteUrl: PropTypes.string,
+      }),
+    }),
     allContentfulLocation: PropTypes.shape({
       nodes: PropTypes.arrayOf(
         PropTypes.shape({
@@ -87,6 +130,45 @@ Home.propTypes = {
     mainImage: PropTypes.shape({
       localFile: PropTypes.shape,
     }).isRequired,
+    faviconImage: PropTypes.shape,
+    featuredImage: PropTypes.shape({
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          fluid: PropTypes.shape({
+            src: PropTypes.string,
+            presentationWidth: PropTypes.number,
+            presentationHeight: PropTypes.number,
+          }),
+        }),
+      }),
+    }),
+    ogImage: PropTypes.shape({
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          fixed: PropTypes.shape({
+            src: PropTypes.string,
+          }),
+        }),
+      }),
+    }),
+    ogSquareImage: PropTypes.shape({
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          fixed: PropTypes.shape({
+            src: PropTypes.string,
+          }),
+        }),
+      }),
+    }),
+    twitterImage: PropTypes.shape({
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          fixed: PropTypes.shape({
+            src: PropTypes.string,
+          }),
+        }),
+      }),
+    }),
   }).isRequired,
   location: PropTypes.shape({
     state: PropTypes.shape({
@@ -98,10 +180,16 @@ Home.propTypes = {
 export const query = graphql`
   query HomeQuery {
     site {
-      ...PageHeaderFragment
+      ...SEOFragment
     }
     allContentfulLocation {
       ...HeaderFragment
+    }
+    faviconImage: file(absolutePath: { regex: "//content/assets/rodneylab-icon.png/" }) {
+      ...FaviconImageFragment
+    }
+    featuredImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      ...FeaturedImageFragment
     }
     mainImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
       localFile {
@@ -114,7 +202,14 @@ export const query = graphql`
         }
       }
     }
+    ogImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      ...OGImageFragment
+    }
+    ogSquareImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      ...OGSquareImageFragment
+    }
+    twitterImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      ...TwitterImageFragment
+    }
   }
 `;
-
-export { Home as default };
