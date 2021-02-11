@@ -71,7 +71,7 @@ export const ExternalTextLink = ({
       >
         {text}
         {' '}
-        <ExternalLinkIcon />
+        <ExternalLinkIcon alt="(opens in new tab)" />
       </CustomExternalLink>
     ) : (
       <CustomExternalLink
@@ -84,7 +84,7 @@ export const ExternalTextLink = ({
       >
         {text}
         {' '}
-        <ExternalLinkIcon />
+        <ExternalLinkIcon alt="(opens in new tab)" />
       </CustomExternalLink>
     )}
   </>
