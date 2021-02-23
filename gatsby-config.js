@@ -7,6 +7,7 @@ const {
   CONTENTFUL_SPACE_ID,
   FORMIUM_TOKEN,
   GATSBY_FORMIUM_PROJECTID,
+  WORDPRESS_SOURCE_URL,
 } = process.env;
 
 delete process.env.https_proxy;
@@ -129,5 +130,11 @@ module.exports = {
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-preact',
+    {
+      resolve: 'gatsby-source-wordpress-experimental',
+      options: {
+        url: WORDPRESS_SOURCE_URL,
+      },
+    },
   ],
 };
