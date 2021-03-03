@@ -15,20 +15,27 @@ import { PureSEO as SEO } from '../components/SEO/SEO';
 export default function BlogPostTemplate({ data }) {
   const { previous, next, post } = data;
   const { featuredImage, title, uri } = post;
+  const { opengraphImage, opengraphTitle } = post.seo;
   // const featuredImage = {
   //   fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
   //   alt: post.featuredImage?.node?.alt || '',
   // };
 
-  const { siteUrl } = data.site.siteMetadata;
+  const { facebookPage, facebookAuthorPage, siteUrl } = data.site.siteMetadata;
   const pageMetadata = {
     featuredImage: {
       url: getSrc(featuredImage?.node?.localFile),
       width: 992,
       height: 730,
     },
+    ogImage: {
+      url: opengraphImage ? getSrc(opengraphImage.localFile) : null,
+      // url: opengraphImage.uri,
+      alt: opengraphImage.altText,
+      width: 1200,
+      height: 627,
+    },
     // ogImage: {
-    //   url: data.ogImage ? getSrc(data.ogImage.localFile) : null,
     //   width: 1200,
     //   height: 627,
     // },
@@ -42,7 +49,9 @@ export default function BlogPostTemplate({ data }) {
     //   width: 800,
     //   height: 418,
     // },
-    pageTitle: 'About',
+    facebookAuthorPage,
+    facebookPage,
+    pageTitle: opengraphTitle,
     seoMetaDescription: 'AudioC0re: headhones sharing... share your core. Learn about AudoC0re.',
     title,
     url: `${siteUrl}${uri}`,
@@ -50,7 +59,7 @@ export default function BlogPostTemplate({ data }) {
 
   return (
     <Layout data={data}>
-      <SEO data={data} pageMetadata={pageMetadata} />
+      <SEO data={data} isArticle pageMetadata={pageMetadata} />
       <article className="blog-post" itemScope itemType="http://schema.org/Article">
         <header>
           <Heading as="h1" size="xl" my="4">
@@ -166,6 +175,26 @@ export const pageQuery = graphql`
       content
       title
       date(formatString: "MMMM DD, YYYY")
+      uri
+      seo {
+        metaDesc
+        opengraphModifiedTime
+        opengraphPublishedTime
+        opengraphTitle
+        opengraphImage {
+          altText
+          uri
+          localFile {
+            childImageSharp {
+              gatsbyImageData(
+                width: 1200
+                height: 627
+                layout: FIXED
+              )
+            }
+          }
+        }
+      }
       featuredImage {
         node {
           altText

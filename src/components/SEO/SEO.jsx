@@ -8,8 +8,9 @@ import { PureSchemaOrg as SchemaOrg } from './SchemaOrg';
 import Twitter from './Twitter';
 import { VERTICAL_LINE_ENTITY } from '../../constants/entities';
 
-export const PureSEO = ({ data, pageMetadata = null }) => {
+export const PureSEO = ({ data, isArticle, pageMetadata = null }) => {
   const {
+    post,
     site: {
       buildTime,
       siteMetadata: {
@@ -28,17 +29,14 @@ export const PureSEO = ({ data, pageMetadata = null }) => {
     },
   } = data;
   const { featuredImage } = pageMetadata;
-  const seoMetadata = {
+  let seoMetadata = {
     author,
     authorImage,
     categories: pageMetadata.categories,
-    dateModified: buildTime,
-    datePublished: buildTime,
     facebookAuthorPage,
     facebookPage,
     featuredImage: pageMetadata.featuredImage,
     featuredImageAlt: pageMetadata.featuredImageAlt,
-    seoMetaDescription: pageMetadata.seoMetaDescription,
     siteLanguage,
     siteTitle,
     siteTitleAlt,
@@ -46,6 +44,24 @@ export const PureSEO = ({ data, pageMetadata = null }) => {
     title: `${pageMetadata.pageTitle} ${VERTICAL_LINE_ENTITY} ${data.site.siteMetadata.title}`,
     url: pageMetadata.url,
   };
+
+  if (isArticle) {
+    const { metaDesc, opengraphModifiedTime, opengraphPublishedTime } = post.seo;
+    seoMetadata = {
+      ...seoMetadata,
+      dateModified: opengraphModifiedTime,
+      datePublished: opengraphPublishedTime,
+      ogImage: pageMetadata.ogImage,
+      seoMetaDescription: metaDesc,
+    };
+  } else {
+    seoMetadata = {
+      ...seoMetadata,
+      dateModified: buildTime,
+      datePublished: buildTime,
+      seoMetaDescription: pageMetadata.seoMetaDescription,
+    };
+  }
 
   const { faviconImage } = pageMetadata;
   const ogImage = pageMetadata.ogImage || featuredImage;
@@ -70,6 +86,7 @@ export const PureSEO = ({ data, pageMetadata = null }) => {
       </Helmet>
       <SchemaOrg data={data} seoMetadata={seoMetadata} homePageMetadata={homePageMetadata} />
       <Facebook
+        isArticle={isArticle}
         seoMetadata={seoMetadata}
         image={ogImage}
         squareImage={ogSquareImage}
@@ -84,8 +101,8 @@ export const PureSEO = ({ data, pageMetadata = null }) => {
 };
 
 PureSEO.defaultProps = {
+  isArticle: false,
   pageMetadata: null,
-  postMetadata: null,
   homePageMetadata: null,
 };
 
@@ -116,17 +133,20 @@ PureSEO.propTypes = {
         title: PropTypes.string,
       }).isRequired,
     }).isRequired,
+    post: PropTypes.shape({
+      seo: PropTypes.shape({
+        metaDesc: PropTypes.string,
+        opengraphModifiedTime: PropTypes.string,
+        opengraphPublishedTime: PropTypes.string,
+        opengraphTitle: PropTypes.string,
+      }),
+    }),
   }).isRequired,
+  isArticle: PropTypes.bool,
   pageMetadata: PropTypes.shape({
     pageTitle: PropTypes.string.isRequired,
     categories: PropTypes.arrayOf(PropTypes.string),
     seoMetaDescription: PropTypes.string,
-  }),
-  postMetadata: PropTypes.shape({
-    postTitle: PropTypes.string.isRequired,
-    categories: PropTypes.arrayOf(PropTypes.string),
-    seoMetaDescription: PropTypes.string,
-    timeToRead: PropTypes.number.isRequired,
   }),
   homePageMetadata: PropTypes.shape({
     faviconImage: PropTypes.shape({
