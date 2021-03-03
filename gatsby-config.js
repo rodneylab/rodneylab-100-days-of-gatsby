@@ -88,7 +88,6 @@ module.exports = {
         icon: 'src/images/rodneylab-logo.png',
       },
     },
-    'gatsby-plugin-mdx',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-filesystem',
@@ -131,7 +130,7 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-plugin-preact',
     {
-      resolve: 'gatsby-source-wordpress-experimental',
+      resolve: 'gatsby-source-wordpress',
       options: {
         url: WORDPRESS_SOURCE_URL,
       },
