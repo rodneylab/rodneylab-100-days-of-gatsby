@@ -52,7 +52,10 @@ export const PureSEO = ({ data, isArticle, pageMetadata = null }) => {
       dateModified: opengraphModifiedTime,
       datePublished: opengraphPublishedTime,
       ogImage: pageMetadata.ogImage,
+      ogSquareImage: pageMetadata.ogSquareImage,
+      timeToRead: pageMetadata.timeToRead,
       seoMetaDescription: metaDesc,
+      twitterImage: pageMetadata.twitterImage,
     };
   } else {
     seoMetadata = {
@@ -95,7 +98,12 @@ export const PureSEO = ({ data, isArticle, pageMetadata = null }) => {
         facebookAuthorPage={facebookAuthorPage}
         facebookPage={facebookPage}
       />
-      <Twitter seoMetadata={seoMetadata} image={twitterImage} twitterUsername={twitterUsername} />
+      <Twitter
+        isArticle
+        seoMetadata={seoMetadata}
+        image={twitterImage}
+        twitterUsername={twitterUsername}
+      />
     </>
   );
 };

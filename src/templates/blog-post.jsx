@@ -4,6 +4,7 @@ import { Heading } from '@chakra-ui/react';
 import { Link, graphql } from 'gatsby';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
+import readingTime from 'reading-time';
 
 // We're using Gutenberg so we need the block styles
 import '@wordpress/block-library/build-style/style.css';
@@ -15,44 +16,45 @@ import { PureSEO as SEO } from '../components/SEO/SEO';
 export default function BlogPostTemplate({ data }) {
   const { previous, next, post } = data;
   const { featuredImage, title, uri } = post;
-  const { opengraphImage, opengraphTitle } = post.seo;
-  // const featuredImage = {
-  //   fluid: post.featuredImage?.node?.localFile?.childImageSharp?.fluid,
-  //   alt: post.featuredImage?.node?.alt || '',
-  // };
+  const {
+    ogSquareImage, opengraphImage, opengraphTitle, twitterImage,
+  } = post.seo;
+  const timeToRead = Math.max(1, Math.round(readingTime(post.content).minutes));
+  const featuredImageAltText = featuredImage?.node?.altText
+    ? featuredImage.node.altText
+    : opengraphTitle;
 
   const { facebookPage, facebookAuthorPage, siteUrl } = data.site.siteMetadata;
   const pageMetadata = {
     featuredImage: {
+      alt: featuredImageAltText,
       url: getSrc(featuredImage?.node?.localFile),
       width: 992,
       height: 730,
     },
     ogImage: {
       url: opengraphImage ? getSrc(opengraphImage.localFile) : null,
-      // url: opengraphImage.uri,
-      alt: opengraphImage.altText,
+      alt: opengraphImage.altText === '' ? featuredImageAltText : opengraphImage.altText,
       width: 1200,
       height: 627,
     },
-    // ogImage: {
-    //   width: 1200,
-    //   height: 627,
-    // },
-    // ogSquareImage: {
-    //   url: data.ogSquareImage ? getSrc(data.ogSquareImage.localFile) : null,
-    //   width: 400,
-    //   height: 400,
-    // },
-    // twitterImage: {
-    //   url: data.twitterImage ? getSrc(data.twitterImage.localFile) : null,
-    //   width: 800,
-    //   height: 418,
-    // },
+    ogSquareImage: {
+      url: ogSquareImage ? getSrc(ogSquareImage.localFile) : null,
+      alt: ogSquareImage.altText === '' ? featuredImageAltText : ogSquareImage.altText,
+      width: 400,
+      height: 400,
+    },
+    twitterImage: {
+      alt: twitterImage.altText === '' ? featuredImageAltText : twitterImage.altText,
+      url: twitterImage ? getSrc(twitterImage.localFile) : null,
+      width: 800,
+      height: 418,
+    },
     facebookAuthorPage,
     facebookPage,
     pageTitle: opengraphTitle,
     seoMetaDescription: 'AudioC0re: headhones sharing... share your core. Learn about AudoC0re.',
+    timeToRead: `${timeToRead} ${timeToRead !== 1 ? 'minutes' : 'minute'}`,
     title,
     url: `${siteUrl}${uri}`,
   };
@@ -127,11 +129,26 @@ BlogPostTemplate.propTypes = {
       uri: PropTypes.string,
       featuredImage: PropTypes.shape({
         altText: PropTypes.string,
-        node: ({
+        node: {
           localFile: PropTypes.shape({
             childImageSharp: PropTypes.shape,
           }),
+        },
+      }),
+      seo: PropTypes.shape({
+        opengraphImage: PropTypes.shape({
+          altText: PropTypes.string,
+          localFile: PropTypes.shape,
         }),
+        ogSquareImage: PropTypes.shape({
+          altText: PropTypes.string,
+          localFile: PropTypes.shape,
+        }),
+        twitterImage: PropTypes.shape({
+          altText: PropTypes.string,
+          localFile: PropTypes.shape,
+        }),
+        opengraphTitle: PropTypes.string,
       }),
     }),
     next: PropTypes.shape({
@@ -141,6 +158,8 @@ BlogPostTemplate.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string,
+        facebookAuthorPage: PropTypes.string,
+        facebookPage: PropTypes.string,
         siteUrl: PropTypes.string,
       }),
     }),
@@ -181,16 +200,34 @@ export const pageQuery = graphql`
         opengraphModifiedTime
         opengraphPublishedTime
         opengraphTitle
+        twitterDescription
+        twitterTitle
         opengraphImage {
           altText
-          uri
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 1200, height: 627, layout: FIXED)
+            }
+          }
+        }
+        ogSquareImage: opengraphImage {
+          altText
           localFile {
             childImageSharp {
               gatsbyImageData(
-                width: 1200
-                height: 627
+                width: 400
+                height: 400
                 layout: FIXED
+                transformOptions: { cropFocus: ENTROPY }
               )
+            }
+          }
+        }
+        twitterImage {
+          altText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 800, height: 418, layout: FIXED)
             }
           }
         }

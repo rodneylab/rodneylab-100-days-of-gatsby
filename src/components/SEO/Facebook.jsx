@@ -8,14 +8,13 @@ const Facebook = ({
     datePublished,
     featuredImageAlt,
     ogImage,
+    ogSquareImage,
     seoMetaDescription,
     siteTitle,
     siteUrl,
     title,
     url,
   },
-  image,
-  squareImage,
   ogLanguage,
   facebookAppId,
   facebookAuthorPage,
@@ -39,10 +38,14 @@ const Facebook = ({
         <meta property="article:author" content={facebookAuthorPage} />
         <meta property="article:published_time" content={datePublished} />
         <meta property="article:modified_time" content={dateModified} />
-        <meta property="og:image" content={`${siteUrl}${image.url}`} />
-        <meta property="og:image:width" content={image.width} />
-        <meta property="og:image:height" content={image.height} />
+        <meta property="og:image" content={`${siteUrl}${ogImage.url}`} />
+        <meta property="og:image:width" content={ogImage.width} />
+        <meta property="og:image:height" content={ogImage.height} />
         <meta property="og:image:alt" content={ogImage.alt} />
+        <meta property="og:image" content={`${siteUrl}${ogSquareImage.url}`} />
+        <meta property="og:image:width" content={ogSquareImage.width} />
+        <meta property="og:image:height" content={ogSquareImage.height} />
+        <meta property="og:image:alt" content={ogSquareImage.alt} />
         <meta property="fb:app_id" content={facebookAppId} />
       </Helmet>
     );
@@ -60,13 +63,13 @@ const Facebook = ({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={seoMetaDescription} />
-      <meta property="og:image" content={`${siteUrl}${image.url}`} />
-      <meta property="og:image:width" content={image.width} />
-      <meta property="og:image:height" content={image.height} />
+      <meta property="og:image" content={`${siteUrl}${ogImage.url}`} />
+      <meta property="og:image:width" content={ogImage.width} />
+      <meta property="og:image:height" content={ogImage.height} />
       <meta property="og:image:alt" content={featuredImageAlt} />
-      <meta property="og:image" content={`${siteUrl}${squareImage.url}`} />
-      <meta property="og:image:width" content={squareImage.width} />
-      <meta property="og:image:height" content={squareImage.height} />
+      <meta property="og:image" content={`${siteUrl}${ogSquareImage.url}`} />
+      <meta property="og:image:width" content={ogSquareImage.width} />
+      <meta property="og:image:height" content={ogSquareImage.height} />
       <meta property="og:image:alt" content={featuredImageAlt} />
       <meta property="fb:app_id" content={facebookAppId} />
     </Helmet>
@@ -87,22 +90,21 @@ Facebook.propTypes = {
     featuredImageAlt: PropTypes.string,
     ogImage: PropTypes.shape({
       alt: PropTypes.string,
+      width: PropTypes.number,
+      height: PropTypes.number,
+      url: PropTypes.string,
+    }),
+    ogSquareImage: PropTypes.shape({
+      alt: PropTypes.string,
+      width: PropTypes.number,
+      height: PropTypes.number,
+      url: PropTypes.string,
     }),
     seoMetaDescription: PropTypes.string,
     siteTitle: PropTypes.string,
     siteUrl: PropTypes.string,
     title: PropTypes.string,
     url: PropTypes.string,
-  }).isRequired,
-  image: PropTypes.shape({
-    url: PropTypes.string,
-    width: PropTypes.number,
-    height: PropTypes.number,
-  }).isRequired,
-  squareImage: PropTypes.shape({
-    url: PropTypes.string,
-    width: PropTypes.number,
-    height: PropTypes.number,
   }).isRequired,
   ogLanguage: PropTypes.string,
   facebookAppId: PropTypes.string.isRequired,
