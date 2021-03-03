@@ -15,7 +15,7 @@ import { PureSEO as SEO } from '../components/SEO/SEO';
 
 export default function BlogPostTemplate({ data }) {
   const { previous, next, post } = data;
-  const { featuredImage, title, uri } = post;
+  const { featuredImage, uri } = post;
   const {
     ogSquareImage, opengraphImage, opengraphTitle, twitterImage,
   } = post.seo;
@@ -24,7 +24,7 @@ export default function BlogPostTemplate({ data }) {
     ? featuredImage.node.altText
     : opengraphTitle;
 
-  const { facebookPage, facebookAuthorPage, siteUrl } = data.site.siteMetadata;
+  const { facebookPage, facebookAuthorPage, siteUrl, title, titleAlt, } = data.site.siteMetadata;
   const pageMetadata = {
     featuredImage: {
       alt: featuredImageAltText,
@@ -158,6 +158,7 @@ BlogPostTemplate.propTypes = {
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string,
+        titleAlt: PropTypes.string,
         facebookAuthorPage: PropTypes.string,
         facebookPage: PropTypes.string,
         siteUrl: PropTypes.string,

@@ -18,6 +18,7 @@ delete process.env.HTTP_PROXY;
 delete process.env._proxy;
 const website = {
   title: 'AudioC0re',
+  titleAlt: 'The leading headphones sharing app in the world!',
   language: 'en-GB',
   background_color: '#011946',
   theme_color: '#fcd600',
@@ -35,6 +36,7 @@ module.exports = {
     facebookPage: 'https://www.facebook.com/rodneyLab',
     ogLanguage: 'en_GB',
     title: website.title,
+    titleAlt: website.titleAlt, // used in SchemaOrg Structured data as decscription
     siteLanguage: website.language,
     siteUrl: 'https://rodneylab.com',
     twitterUsername: '@rodneylab',

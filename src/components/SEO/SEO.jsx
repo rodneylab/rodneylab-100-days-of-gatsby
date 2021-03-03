@@ -209,6 +209,7 @@ export const seoQuery = graphql`
     modifiedTime: buildTime(formatString: "YYYY-MM-DDTHH:mm:ssZ")
     siteMetadata {
       title
+      siteTitleAlt: titleAlt
       headline
       siteUrl
       siteLanguage

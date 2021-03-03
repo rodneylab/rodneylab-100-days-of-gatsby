@@ -26,6 +26,8 @@ export const PureSchemaOrg = ({
   // not be considered secure
   const entityHash = hash({ author }, { algorithm: 'md5' });
 
+  console.log('siteTitleAlt: ', siteTitleAlt);
+
   const schemaOrgWebsite = {
     '@type': 'WebSite',
     '@id': `${siteUrl}/#website`,
