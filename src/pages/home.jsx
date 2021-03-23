@@ -128,9 +128,21 @@ Home.propTypes = {
       ),
     }),
     mainImage: PropTypes.shape({
-      localFile: PropTypes.shape,
+      localFile: PropTypes.shape({
+        childImageSharp: PropTypes.shape({
+          gatsbyImageData: PropTypes.shape({
+            layout: PropTypes.string,
+          }),
+        }),
+      }),
     }).isRequired,
-    faviconImage: PropTypes.shape,
+    faviconImage: PropTypes.shape({
+      childImageSharp: PropTypes.shape({
+        gatsbyImageData: PropTypes.shape({
+          layout: PropTypes.string,
+        }),
+      }),
+    }),
     featuredImage: PropTypes.shape({
       localFile: PropTypes.shape({
         childImageSharp: PropTypes.shape({
@@ -185,7 +197,7 @@ export const query = graphql`
     allContentfulLocation {
       ...HeaderFragment
     }
-    faviconImage: file(absolutePath: { regex: "//content/assets/rodneylab-icon.png/" }) {
+    faviconImage: file(absolutePath: { regex: "//src/images/rodneylab-logo.png/" }) {
       ...FaviconImageFragment
     }
     featuredImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {

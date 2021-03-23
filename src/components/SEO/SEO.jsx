@@ -35,13 +35,16 @@ export const PureSEO = ({ data, isArticle, pageMetadata = null }) => {
     categories: pageMetadata.categories,
     facebookAuthorPage,
     facebookPage,
-    featuredImage: pageMetadata.featuredImage,
+    ogImage: pageMetadata.ogImage || featuredImage,
+    ogSquareImage: pageMetadata.ogSquareImage || featuredImage,
+    featuredImage,
     featuredImageAlt: pageMetadata.featuredImageAlt,
     siteLanguage,
     siteTitle,
     siteTitleAlt,
     siteUrl,
     title: `${pageMetadata.pageTitle} ${VERTICAL_LINE_ENTITY} ${data.site.siteMetadata.title}`,
+    twitterImage: pageMetadata.twitterImage || featuredImage,
     url: pageMetadata.url,
   };
 
@@ -51,11 +54,8 @@ export const PureSEO = ({ data, isArticle, pageMetadata = null }) => {
       ...seoMetadata,
       dateModified: opengraphModifiedTime,
       datePublished: opengraphPublishedTime,
-      ogImage: pageMetadata.ogImage,
-      ogSquareImage: pageMetadata.ogSquareImage,
       timeToRead: pageMetadata.timeToRead,
       seoMetaDescription: metaDesc,
-      twitterImage: pageMetadata.twitterImage,
     };
   } else {
     seoMetadata = {
@@ -67,8 +67,6 @@ export const PureSEO = ({ data, isArticle, pageMetadata = null }) => {
   }
 
   const { faviconImage } = pageMetadata;
-  const ogImage = pageMetadata.ogImage || featuredImage;
-  const ogSquareImage = pageMetadata.ogSquareImage || ogImage;
   const twitterImage = pageMetadata.twitterImage || featuredImage;
 
   const homePageMetadata = faviconImage
@@ -91,8 +89,6 @@ export const PureSEO = ({ data, isArticle, pageMetadata = null }) => {
       <Facebook
         isArticle={isArticle}
         seoMetadata={seoMetadata}
-        image={ogImage}
-        squareImage={ogSquareImage}
         ogLanguage={ogLanguage}
         facebookAppId={facebookAppId}
         facebookAuthorPage={facebookAuthorPage}
