@@ -4,5 +4,6 @@ public
 .env.development
 .env.production
 cypress/integration/examples/
-cypress/fixtures/example.json
+cypress/fixtures/
+cypress/screenshots/
 src/.DS_Store
