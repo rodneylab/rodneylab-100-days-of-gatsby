@@ -7,6 +7,9 @@ const {
   CONTENTFUL_SPACE_ID,
   FORMIUM_TOKEN,
   GATSBY_FORMIUM_PROJECTID,
+  SHOPIFY_ADMIN_API_KEY,
+  SHOPIFY_ADMIN_PASSWORD,
+  SHOPIFY_STORE_URL,
   WORDPRESS_SOURCE_URL,
 } = process.env;
 
@@ -42,15 +45,15 @@ module.exports = {
     twitterUsername: '@rodneylab',
   },
   plugins: [
-    {
-      resolve: 'gatsby-source-contentful',
-      options: {
-        accessToken: CONTENTFUL_API_ACCESS_TOKEN,
-        environment: 'master',
-        spaceId: CONTENTFUL_SPACE_ID,
-        downloadLocal: true,
-      },
-    },
+    // {
+    //   resolve: 'gatsby-source-contentful',
+    //   options: {
+    //     accessToken: CONTENTFUL_API_ACCESS_TOKEN,
+    //     environment: 'master',
+    //     spaceId: CONTENTFUL_SPACE_ID,
+    //     downloadLocal: true,
+    //   },
+    // },
     '@chakra-ui/gatsby-plugin',
     {
       resolve: 'gatsby-plugin-google-analytics',
@@ -58,7 +61,6 @@ module.exports = {
         trackingId: 'abc',
       },
     },
-    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
@@ -137,5 +139,14 @@ module.exports = {
         url: WORDPRESS_SOURCE_URL,
       },
     },
+    {
+      resolve: 'gatsby-source-shopify-experimental',
+      options: {
+        apiKey: SHOPIFY_ADMIN_API_KEY,
+        password: SHOPIFY_ADMIN_PASSWORD,
+        storeUrl: SHOPIFY_STORE_URL,
+      },
+    },
+    'gatsby-plugin-image',
   ],
 };

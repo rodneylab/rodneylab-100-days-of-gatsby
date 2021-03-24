@@ -136,9 +136,7 @@ export default function Contact({ pageContext: { slug }, data }) {
         <SEO data={data} pageMetadata={pageMetadata} />
         <Layout data={data}>
           <Flex as="main" w="100%" justify="stretch" direction="column" color="yellow.500">
-            <VisuallyHidden>
-              <Heading as="h1">Contact us</Heading>
-            </VisuallyHidden>
+            <VisuallyHidden as="h1">Contact us</VisuallyHidden>
             <Grid templateColumns="1fr 40% 40% 1fr" templateRows="auto auto" py="12">
               <GridItem colSpan={1} rowSpan={1} />
               <GridItem bg="blue.700" colSpan={2} rowSpan={1}>
@@ -192,9 +190,7 @@ export default function Contact({ pageContext: { slug }, data }) {
       <SEO data={data} pageMetadata={pageMetadata} />
       <Layout data={data}>
         <Flex as="main" direction="column" w="100%" color="yellow.500" px={[4, 4, 'auto', 4, 0]}>
-          <VisuallyHidden>
-            <Heading as="h1">Contact us</Heading>
-          </VisuallyHidden>
+          <VisuallyHidden as="h1">Contact us</VisuallyHidden>
           <Flex bg="blue.700" justify="flex-start" direction="column">
             <Grid templateColumns="1fr 80% 1fr" templateRows="auto" py="12">
               <GridItem colSpan={1} />
