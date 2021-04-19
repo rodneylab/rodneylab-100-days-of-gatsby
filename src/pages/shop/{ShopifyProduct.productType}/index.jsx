@@ -1,8 +1,10 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import { Container, Heading } from '@chakra-ui/react';
+import { Container, Flex, Heading } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
+import AudioCore from '../../../components/Brand';
+import Breadcrumbs from '../../../components/Breadcrumbs';
 import {
   getFeaturedImage,
   getOgImage,
@@ -31,12 +33,16 @@ export default function ProductTypeIndex({ data, pageContext: { productType } })
     <>
       <SEO data={data} pageMetadata={pageMetadata} />
       <Layout data={data}>
-        <main>
-          <Heading as="h1" size="xl">{`AudioC0re Shop: ${productType}`}</Heading>
+        <Breadcrumbs items={[{ name: 'Home', to: '/home/' }, { name: 'AudioCore Shop', to: '/shop/' }, { name: `AudioCore ${productType}`, to: `/shop/${productType.toLowerCase()}` }]} />
+        <Flex as="main" direction="column" w="100%" maxW="6xl" align="baseline" px="4">
+          <Heading as="h1" size="xl">
+            <AudioCore />
+            {` Shop: ${productType}`}
+          </Heading>
           <Container py={20}>
             <ProductListing products={data.products} />
           </Container>
-        </main>
+        </Flex>
       </Layout>
     </>
   );

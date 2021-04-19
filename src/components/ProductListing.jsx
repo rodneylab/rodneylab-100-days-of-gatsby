@@ -4,17 +4,23 @@ import PropTypes from 'prop-types';
 
 import ProductCard from './ProductCard';
 
-const ProductListing = ({ products }) => (
-  <Grid
-    templateColumns={['1fr', 'repeat(2, 1fr)', null, 'repeat(3, 1fr)']}
-    columnGap={6}
-    rowGap={[12, 16, 20]}
-  >
-    {products.nodes.map((product) => (
-      <ProductCard product={product} key={product.shopifyId} />
-    ))}
-  </Grid>
-);
+const ProductListing = ({ products }) => {
+  const productCount = products.nodes.length;
+  const gridColumms = Math.min(productCount, 3);
+
+  return (
+    <Grid
+      templateColumns={['1fr', 'repeat(2, 1fr)', null, `repeat(${gridColumms}, 1fr)`]}
+      columnGap={6}
+      rowGap={[12, 16, 20]}
+      mx="auto"
+    >
+      {products.nodes.map((product) => (
+        <ProductCard product={product} key={product.shopifyId} />
+      ))}
+    </Grid>
+  );
+};
 
 ProductListing.propTypes = {
   products: PropTypes.shape({

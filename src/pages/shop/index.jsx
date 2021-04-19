@@ -1,8 +1,10 @@
 import React from 'react';
-import { Container, Heading } from '@chakra-ui/react';
+import { Flex, Heading } from '@chakra-ui/react';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
+import AudioCore from '../../components/Brand';
+import Breadcrumbs from '../../components/Breadcrumbs';
 import {
   getFeaturedImage, getOgImage, getOgSquareImage, getTwitterImage,
 } from '../../utils/seo';
@@ -10,14 +12,14 @@ import ProductListing from '../../components/ProductListing';
 import { PureLayout as Layout } from '../../components/Layout';
 import { PureSEO as SEO } from '../../components/SEO/SEO';
 
-export default function ShopIndex({ data, pageContext: { productType } }) {
+export default function ShopIndex({ data }) {
   const { siteUrl, title } = data.site.siteMetadata;
   const pageMetadata = {
     featuredImage: getFeaturedImage({ image: data.featuredImage.localFile }),
     ogImage: getOgImage({ image: data.ogImage.localFile }),
     ogSquareImage: getOgSquareImage({ image: data.ogSquareImage.localFile }),
     twitterImage: getTwitterImage({ image: data.twitterImage.localFile }),
-    pageTitle: `${productType} Merchandise`,
+    pageTitle: 'AudioC0re Merchandise',
     seoMetaDescription: 'AudioC0re Merchandise: show your appreciation for AudioC0re.',
     title,
     url: `${siteUrl}/home/about/`,
@@ -27,12 +29,17 @@ export default function ShopIndex({ data, pageContext: { productType } }) {
     <>
       <SEO data={data} pageMetadata={pageMetadata} />
       <Layout data={data}>
-        <main>
-          <Heading as="h1" size="xl">AudioC0re Shop</Heading>
-          <Container py={20}>
+        <Flex as="main" direction="column" w="100%" maxW="6xl" align="baseline" px="4">
+          <Breadcrumbs items={[{ name: 'Home', to: '/home/' }, { name: 'Shop', to: '/shop/' }]} />
+          <Heading as="h1" size="xl">
+            <AudioCore />
+            {' '}
+            Shop
+          </Heading>
+          <Flex py={12} px="auto" w="100%">
             <ProductListing products={data.products} />
-          </Container>
-        </main>
+          </Flex>
+        </Flex>
       </Layout>
     </>
   );

@@ -49,7 +49,7 @@ const RodneyLabCredit = () => (
   </Flex>
 );
 const Footer = () => (
-  <Flex as="footer" direction="column" my="2">
+  <Flex as="footer" direction="column" my="2" mx={4}>
     <Flex>
       <Text fontSize="2xl">
         <AudioCore />
@@ -59,14 +59,21 @@ const Footer = () => (
       <Text textStyle="footerNavHeader">COMPANY</Text>
       <UnorderedList styleType="none" m="0" p="0">
         <ListItem>
-          <NavLink ariaLabel="Find out about Audio Link" to="/about/">
+          <NavLink ariaLabel="Open Audio Core shop" to="/shop/">
+            <Text py={['3', '3', '3', '1', '1']} textStyle="footerNavItem">
+              Shop
+            </Text>
+          </NavLink>
+        </ListItem>
+        <ListItem>
+          <NavLink ariaLabel="Find out about Audio Core" to="/about/">
             <Text py={['3', '3', '3', '1', '1']} textStyle="footerNavItem">
               About
             </Text>
           </NavLink>
         </ListItem>
         <ListItem>
-          <NavLink ariaLabel="Contact Audio Link" to="/contact/">
+          <NavLink ariaLabel="Contact Audio Core" to="/contact/">
             <Text py={['3', '3', '3', '1', '1']} textStyle="footerNavItem">
               Contact
             </Text>

@@ -32,11 +32,13 @@ const ProductCard = ({
         <GatsbyImage alt="" image={getImage(images[0].gatsbyImageData)} />
       </Box>
       <Grid templateColumns="auto auto" gap={6} mt={6}>
-        <Heading as="h2">{title}</Heading>
+        <Heading as="h2" size="md">
+          {title}
+        </Heading>
+        <Tag alignSelf="flex-start" justifySelf="flex-end" size="lg" bg="blue.700" color="pink.100">
+          {price}
+        </Tag>
       </Grid>
-      <Tag alignSelf="flex-start" justifySelf="flex-end" size="lg">
-        {price}
-      </Tag>
     </Link>
   );
 };
