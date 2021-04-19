@@ -1,25 +1,22 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 import { Container, Heading } from '@chakra-ui/react';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 
 import {
-  getFeaturedImage,
-  getOgImage,
-  getOgSquareImage,
-  getTwitterImage,
-} from '../../../utils/seo';
-import ProductListing from '../../../components/ProductListing';
-import { PureLayout as Layout } from '../../../components/Layout';
-import { PureSEO as SEO } from '../../../components/SEO/SEO';
+  getFeaturedImage, getOgImage, getOgSquareImage, getTwitterImage,
+} from '../../utils/seo';
+import ProductListing from '../../components/ProductListing';
+import { PureLayout as Layout } from '../../components/Layout';
+import { PureSEO as SEO } from '../../components/SEO/SEO';
 
-export default function ProductTypeIndex({ data, pageContext: { productType } }) {
+export default function ShopIndex({ data, pageContext: { productType } }) {
   const { siteUrl, title } = data.site.siteMetadata;
   const pageMetadata = {
-    featuredImage: getFeaturedImage(data.featuredImage),
-    ogImage: getOgImage(data.ogImage),
-    ogSquareImage: getOgSquareImage(data.ogSquareImage),
-    twitterImage: getTwitterImage(data.twitterImage),
+    featuredImage: getFeaturedImage({ image: data.featuredImage.localFile }),
+    ogImage: getOgImage({ image: data.ogImage.localFile }),
+    ogSquareImage: getOgSquareImage({ image: data.ogSquareImage.localFile }),
+    twitterImage: getTwitterImage({ image: data.twitterImage.localFile }),
     pageTitle: `${productType} Merchandise`,
     seoMetaDescription: 'AudioC0re Merchandise: show your appreciation for AudioC0re.',
     title,
@@ -31,20 +28,34 @@ export default function ProductTypeIndex({ data, pageContext: { productType } })
       <SEO data={data} pageMetadata={pageMetadata} />
       <Layout data={data}>
         <main>
-          <Heading as="h1" size="xl">
-            <Container py={20}>
-              <ProductListing products={data.products} />
-            </Container>
-          </Heading>
+          <Heading as="h1" size="xl">AudioC0re Shop</Heading>
+          <Container py={20}>
+            <ProductListing products={data.products} />
+          </Container>
         </main>
       </Layout>
     </>
   );
 }
 
-ProductTypeIndex.propTypes = {
+ShopIndex.propTypes = {
   data: PropTypes.shape({
-    products: PropTypes.shape({}),
+    products: PropTypes.shape({
+      nodes: PropTypes.arrayOf(
+        PropTypes.shape({
+          shopifyId: PropTypes.string,
+          onlineStorePreviewUrl: PropTypes.string,
+          title: PropTypes.string,
+          images: PropTypes.arrayOf(
+            PropTypes.shape({
+              gatsbyImageData: PropTypes.shape({
+                layout: PropTypes.string,
+              }),
+            }),
+          ),
+        }),
+      ),
+    }),
     site: PropTypes.shape({
       siteMetadata: PropTypes.shape({
         title: PropTypes.string,
@@ -104,9 +115,27 @@ ProductTypeIndex.propTypes = {
 };
 
 export const query = graphql`
-  query($productType: String!) {
+  query ShopIndexQuery {
+    site {
+      ...SEOFragment
+    }
+    allContentfulLocation {
+      ...HeaderFragment
+    }
+    featuredImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      ...FeaturedImageFragment
+    }
+    ogImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      ...OGImageFragment
+    }
+    ogSquareImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      ...OGSquareImageFragment
+    }
+    twitterImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
+      ...TwitterImageFragment
+    }
     products: allShopifyProduct(
-      filter: { productType: { eq: $productType } }
+      filter: { productType: { in: ["T-shirts", "Hats"] } }
       sort: { fields: publishedAt, order: ASC }
     ) {
       nodes {

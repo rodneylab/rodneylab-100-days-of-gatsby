@@ -179,8 +179,5 @@ export const query = graphql`
     twitterImage: contentfulAsset(localFile: {absolutePath: {regex: "/headphones\\.jpg*/"}}) {
       ...TwitterImageFragment
     }
-    allContentfulLocation {
-      ...HeaderFragment
-    }
   }
 `;

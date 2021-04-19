@@ -45,15 +45,15 @@ module.exports = {
     twitterUsername: '@rodneylab',
   },
   plugins: [
-    // {
-    //   resolve: 'gatsby-source-contentful',
-    //   options: {
-    //     accessToken: CONTENTFUL_API_ACCESS_TOKEN,
-    //     environment: 'master',
-    //     spaceId: CONTENTFUL_SPACE_ID,
-    //     downloadLocal: true,
-    //   },
-    // },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        accessToken: CONTENTFUL_API_ACCESS_TOKEN,
+        environment: 'master',
+        spaceId: CONTENTFUL_SPACE_ID,
+        downloadLocal: true,
+      },
+    },
     '@chakra-ui/gatsby-plugin',
     {
       resolve: 'gatsby-plugin-google-analytics',
