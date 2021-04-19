@@ -1,9 +1,12 @@
 import React from 'react';
 import { getSrc } from 'gatsby-plugin-image';
 import { graphql } from 'gatsby';
-import { Heading } from '@chakra-ui/react';
+import {
+  Box, Flex, Heading, Text,
+} from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
+import AudioCore from '../components/Brand';
 import { PureLayout as Layout } from '../components/Layout';
 import { PureSEO as SEO } from '../components/SEO/SEO';
 
@@ -31,8 +34,7 @@ export default function About({ data }) {
       height: 418,
     },
     pageTitle: 'About',
-    seoMetaDescription:
-      'AudioC0re: headhones sharing... share your core. Learn about AudoC0re.',
+    seoMetaDescription: 'AudioC0re: headhones sharing... share your core. Learn about AudoC0re.',
     title,
     url: `${siteUrl}/home/about/`,
   };
@@ -41,11 +43,21 @@ export default function About({ data }) {
     <>
       <SEO data={data} pageMetadata={pageMetadata} />
       <Layout data={data}>
-        <main>
-          <Heading as="h1" size="xl">
+        <Flex as="main" direction="column" w="100%" maxW="6xl" align="baseline" px="4">
+          <Heading as="h1" size="xl" mt={6}>
             About
+            {' '}
+            <AudioCore />
           </Heading>
-        </main>
+          <Box p={6} bg="blue.700" w="80%" mx="auto" mt={12}>
+            <Text color="pink.100" fontSize="2xl">
+              <AudioCore />
+              {' '}
+              offer headphone sharing in Cape Town, London and Rio de Janeiro. Get in
+              touch now to start sharing.
+            </Text>
+          </Box>
+        </Flex>
       </Layout>
     </>
   );
