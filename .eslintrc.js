@@ -17,6 +17,6 @@ module.exports = {
     ecmaVersion: 11,
     sourceType: 'module',
   },
-  plugins: ['react', 'jsx-a11y', 'cypress'],
+  plugins: ['react', 'jsx-a11y', 'testing-library', 'cypress'],
   rules: {},
 };

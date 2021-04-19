@@ -1,6 +1,4 @@
-import React, {
-  useCallback, useContext, useEffect, useState,
-} from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import {
   Box,
   Container,
@@ -26,7 +24,10 @@ import PropTypes from 'prop-types';
 import AddToCart from '../../../components/AddToCart';
 import formatPrice from '../../../utils/shop';
 import {
-  getFeaturedImage, getOgImage, getOgSquareImage, getTwitterImage,
+  getFeaturedImage,
+  getOgImage,
+  getOgSquareImage,
+  getTwitterImage,
 } from '../../../utils/seo';
 import ProductListing from '../../../components/ProductListing';
 import { PureLayout as Layout } from '../../../components/Layout';
@@ -91,9 +92,9 @@ export default function Product({ data }) {
       value,
     };
 
-    const selectedVariant = variants.find((element) => isEqual(
-      currentOptions, element.selectedOptions,
-    ));
+    const selectedVariant = variants.find((element) =>
+      isEqual(currentOptions, element.selectedOptions),
+    );
 
     setVariant({ ...selectedVariant });
   };
@@ -131,12 +132,11 @@ export default function Product({ data }) {
                   <Flex as="form" noValidate direction="row" flexWrap="wrap">
                     <Stack as="fieldset" mr={6} mt={4} sx={{ input: { px: 2, py: 2 } }}>
                       {/* <label htmlFor="quantity">Quantity</label> */}
-                      <FormControl>
+                      <FormControl id="quantity">
                         <FormLabel htmlFor="quantity">Quantity</FormLabel>
                         <NumberInput
                           onChange={(_, value) => setQuantity(value)}
                           value={quantity}
-                          id="quantity"
                           name="quantity"
                           defaultValue={1}
                           min={1}
@@ -188,7 +188,7 @@ export default function Product({ data }) {
                   <Box
                     role="group"
                     aria-label="gallery"
-                    aria-describedby="instructions"
+                    aria-describedby={hasMultipleImages ? 'instructions' : ''}
                     overflowX={hasMultipleImages ? 'scroll' : 'auto'}
                     tabIndex="0"
                     mb={2}
@@ -236,11 +236,7 @@ export default function Product({ data }) {
                       left="50%"
                       transform="translate3d(-50%, 0px, 0px)"
                     >
-                      <span aria-hidden>←</span>
-                      {' '}
-                      scroll for more
-                      {' '}
-                      <span aria-hidden>→</span>
+                      <span aria-hidden>←</span> scroll for more <span aria-hidden>→</span>
                     </Box>
                   ) : null}
                 </Box>
@@ -248,12 +244,14 @@ export default function Product({ data }) {
             </Grid>
           </Container>
         </Box>
-        <Container my={[20, 28]}>
-          <Heading as="h2" mb={8} fontSize="3xl" color="green">
-            More Products
-          </Heading>
-          <ProductListing products={suggestions} />
-        </Container>
+        {suggestions.nodes.length > 0 ? (
+          <Container my={[20, 28]}>
+            <Heading as="h2" mb={8} fontSize="3xl">
+              More Products
+            </Heading>
+            <ProductListing products={suggestions} />
+          </Container>
+        ) : null}
       </Layout>
     </>
   );
