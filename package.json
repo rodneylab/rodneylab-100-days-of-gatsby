@@ -14,7 +14,8 @@
     "wp",
     "contentful",
     "shopify",
-    "netlify"
+    "netlify",
+    "formium"
   ],
   "scripts": {
     "clean": "gatsby clean",
