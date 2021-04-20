@@ -85,7 +85,7 @@ export default function Home({ data, location }) {
           </ModalContent>
         </Modal>
         <main>
-          <Heading as="h1" size="xl" my="4">
+          <Heading as="h1" size="xl" my="4" mx={[4, 4, 0, 0, 0]}>
             <AudioCore />
             {' '}
             &mdash;
@@ -94,7 +94,7 @@ export default function Home({ data, location }) {
           </Heading>
           <GatsbyImage image={getImage(mainImageData)} alt="Audo core headphones" width={992} />
           <Flex>
-            <Heading as="h1" size="xl" ml="auto" my="4">
+            <Heading as="h1" size="xl" ml="auto" my="4" mx={[4, 4, 0, 0, 0]}>
               {H_ELLIPSIS_ENTITY}
               share your c
               <span style={{ fontFamily: 'Fira Code' }}>0</span>
