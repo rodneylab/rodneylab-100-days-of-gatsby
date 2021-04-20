@@ -1,6 +1,7 @@
 {
   "name": "rodneylab-100-days-of-gatsby",
   "version": "1.0.0",
+  "license": "BSD-3-Clause",
   "private": true,
   "description": "rodneylab-100-days-of-gatsby",
   "author": "Rodney Johnson",
