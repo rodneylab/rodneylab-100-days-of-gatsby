@@ -33,7 +33,13 @@ export default function ProductTypeIndex({ data, pageContext: { productType } })
     <>
       <SEO data={data} pageMetadata={pageMetadata} />
       <Layout data={data}>
-        <Breadcrumbs items={[{ name: 'Home', to: '/home/' }, { name: 'AudioCore Shop', to: '/shop/' }, { name: `AudioCore ${productType}`, to: `/shop/${productType.toLowerCase()}` }]} />
+        <Breadcrumbs
+          items={[
+            { name: 'Home', to: '/home/' },
+            { name: 'AudioCore Shop', to: '/shop/' },
+            { name: `AudioCore ${productType}`, to: `/shop/${productType.toLowerCase()}` },
+          ]}
+        />
         <Flex as="main" direction="column" w="100%" maxW="6xl" align="baseline" px="4">
           <Heading as="h1" size="xl">
             <AudioCore />

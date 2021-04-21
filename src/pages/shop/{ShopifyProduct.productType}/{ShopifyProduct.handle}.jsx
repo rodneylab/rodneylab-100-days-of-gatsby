@@ -1,4 +1,6 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, {
+  useCallback, useContext, useEffect, useState,
+} from 'react';
 import {
   Flex,
   FormControl,
@@ -27,6 +29,7 @@ import {
 } from '../../../utils/seo';
 import { PureLayout as Layout } from '../../../components/Layout';
 import { PureSEO as SEO } from '../../../components/SEO/SEO';
+import ShopHeader from '../../../components/ShopHeader';
 import { StoreContext } from '../../../context/StoreContext';
 import { VERTICAL_LINE_ENTITY } from '../../../constants/entities';
 
@@ -36,6 +39,7 @@ export default function Product({ data, pageContext }) {
     description,
     images,
     priceRange,
+    storefrontId,
     title,
     variants: [initialVariant],
   } = product;
@@ -51,7 +55,7 @@ export default function Product({ data, pageContext }) {
   const checkAvailability = useCallback(
     (productId) => {
       client.product.fetch(productId).then((fetchedProduct) => {
-        const result = fetchedProduct.variable.filter(
+        const result = fetchedProduct.variants.filter(
           (localVariant) => localVariant.id === productVariant.storefrontId,
         );
 
@@ -64,8 +68,8 @@ export default function Product({ data, pageContext }) {
   );
 
   useEffect(() => {
-    checkAvailability(product.storefrontId);
-  }, [productVariant.storefrontId, checkAvailability, product.storefrontId]);
+    checkAvailability(storefrontId);
+  }, [productVariant.storefrontId, checkAvailability, storefrontId]);
 
   const price = formatPrice(
     priceRange.minVariantPrice.currencyCode,
@@ -88,6 +92,7 @@ export default function Product({ data, pageContext }) {
     <>
       <SEO data={data} pageMetadata={pageMetadata} />
       <Layout data={data}>
+        <ShopHeader />
         <Breadcrumbs
           items={[
             { name: 'Home', to: '/home/' },

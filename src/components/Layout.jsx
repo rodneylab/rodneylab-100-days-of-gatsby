@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import Footer from './Footer';
 import { PureHeader as Header } from './Header';
 
-export const PureLayout = ({ children, data }) => (
+export const PureLayout = ({ children, data, showHeader }) => (
   <Flex flexDirection="column">
     <Flex bg="blue.700" justify="center">
       <Flex maxW="6xl" w="100%">
-        <Header data={data} />
+        { showHeader ? <Header data={data} /> : null}
       </Flex>
     </Flex>
     <Flex bg="yellow.500" justify="center" w="100%">
@@ -35,6 +35,10 @@ export const PureLayout = ({ children, data }) => (
   </Flex>
 );
 
+PureLayout.defaultProps = {
+  showHeader: true,
+};
+
 PureLayout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
   data: PropTypes.shape({
@@ -47,6 +51,7 @@ PureLayout.propTypes = {
       ),
     }),
   }).isRequired,
+  showHeader: PropTypes.bool,
 };
 
 const Layout = ({ children }) => {

@@ -21,12 +21,12 @@ const defaultValues = {
   loading: false,
   onOpen: () => {},
   onClose: () => {},
-  addVariantToCart: () => {},
+  addVariantToCart: () => { console.log('hello!'); },
   removeLineItem: () => {},
   updateLineItem: () => {},
   client,
   checkout: {
-    linkItems: [],
+    lineItems: [],
   },
 };
 
@@ -37,22 +37,23 @@ export const StoreProvider = ({ children }) => {
   const [checkout, setCheckout] = useState(defaultValues.checkout);
   const [loading, setLoading] = useState(false);
 
-  const setCheckoutItem = (checkoutParameter) => {
+  const setCheckoutItem = (checkout) => {
     if (isBrowser) {
-      localStorage.setItem(localStorageKey, checkoutParameter.id);
+      localStorage.setItem(localStorageKey, checkout.id);
     }
 
-    setCheckout(checkoutParameter);
+    setCheckout(checkout);
   };
 
   useEffect(() => {
-    const initilaizeCheckout = async () => {
+    const initializeCheckout = async () => {
+      console.log('Initialising checkout');
       const existingCheckoutID = isBrowser ? localStorage.getItem(localStorageKey) : null;
 
       if (existingCheckoutID && existingCheckoutID !== 'null') {
         try {
           const existingCheckout = await client.checkout.fetch(existingCheckoutID);
-          if (!existingCheckoutID.completedAt) {
+          if (!existingCheckout.completedAt) {
             setCheckoutItem(existingCheckout);
             return;
           }
@@ -65,13 +66,13 @@ export const StoreProvider = ({ children }) => {
       setCheckoutItem(newCheckout);
     };
 
-    initilaizeCheckout();
+    initializeCheckout();
   }, []);
 
   const addVariantToCart = (variantId, quantity) => {
     setLoading(true);
-
     const checkoutID = checkout.id;
+    console.log('addVarientToCart');
 
     const lineItemsToUpdate = [
       {

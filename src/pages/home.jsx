@@ -92,7 +92,7 @@ export default function Home({ data, location }) {
             {' '}
             headphones sharing
           </Heading>
-          <GatsbyImage image={getImage(mainImageData)} alt="Audo core headphones" width={992} />
+          <GatsbyImage image={getImage(mainImageData)} alt="Audo core headphones" loading="eager" width={992} />
           <Flex>
             <Heading as="h1" size="xl" ml="auto" my="4" mx={[4, 4, 0, 0, 0]}>
               {H_ELLIPSIS_ENTITY}

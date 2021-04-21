@@ -10,7 +10,7 @@ const Breadcrumbs = ({ items }) => {
   const lastIndex = items.length - 1;
 
   return (
-    <Breadcrumb my={4} px={0} w="100%" separator={<ArrowRightIcon boxSize={2} />}>
+    <Breadcrumb my={4} px={4} w="100%" separator={<ArrowRightIcon boxSize={2} />}>
       {items.map((item, index) => (
         <BreadcrumbItem isCurrentPage={index === lastIndex}>
           <BreadcrumbLink as={Link} to={item.to}>

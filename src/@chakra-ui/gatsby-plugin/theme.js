@@ -80,7 +80,31 @@ function baseStyleItem(props) {
   };
 }
 
+function getSize(value) {
+  if (value === 'full') {
+    return { dialog: { maxW: '100vw', h: '100vh' } };
+  }
+  return { dialog: { maxW: value } };
+}
+
 const components = {
+  Badge: {
+    baseStyle: {
+      px: 1,
+      fontSize: 'xl',
+      fontWeight: 'bold',
+      bg: 'pink.200',
+    },
+    variants: {
+      solid: () => ({
+        bg: 'pink.200',
+        color: 'blue.800',
+      }),
+    },
+    defaultProps: {
+      variant: 'solid',
+    },
+  },
   Button: {
     baseStyle: {
       bg: 'blue.700',
@@ -98,6 +122,40 @@ const components = {
           color: 'yellow.500',
         },
       },
+    },
+  },
+  Drawer: {
+    baseStyle: {
+      overlay: {
+        bg: 'yellow.500',
+        zIndex: 'overlay',
+        borderColor: 'blue.800',
+      },
+      dialog: (props) => ({
+        zIndex: 'modal',
+        bg: 'pink.200'(props),
+        color: 'blue.800',
+      }),
+      header: {
+        color: 'blue.800',
+      },
+      closeButton: {
+        color: 'blue.800',
+      },
+      body: {
+        color: 'blue.800',
+      },
+    },
+    sizes: {
+      xs: getSize('xs'),
+      sm: getSize('md'),
+      md: getSize('lg'),
+      lg: getSize('2xl'),
+      xl: getSize('4xl'),
+      full: getSize('full'),
+    },
+    defaultProps: {
+      size: 'xs',
     },
   },
   Form: {
@@ -248,4 +306,3 @@ const theme = extendTheme({
 });
 
 export default theme;
-// export default extendTheme({});

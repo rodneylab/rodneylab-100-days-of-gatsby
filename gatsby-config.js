@@ -7,9 +7,9 @@ const {
   CONTENTFUL_SPACE_ID,
   FORMIUM_TOKEN,
   GATSBY_FORMIUM_PROJECTID,
+  GATSBY_SHOPIFY_STORE_URL,
   SHOPIFY_ADMIN_API_KEY,
   SHOPIFY_ADMIN_PASSWORD,
-  SHOPIFY_STORE_URL,
   WORDPRESS_SOURCE_URL,
 } = process.env;
 
@@ -61,7 +61,6 @@ module.exports = {
         trackingId: 'abc',
       },
     },
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
@@ -144,9 +143,11 @@ module.exports = {
       options: {
         apiKey: SHOPIFY_ADMIN_API_KEY,
         password: SHOPIFY_ADMIN_PASSWORD,
-        storeUrl: SHOPIFY_STORE_URL,
+        storeUrl: GATSBY_SHOPIFY_STORE_URL,
+        // downloadImages: true,
       },
     },
     'gatsby-plugin-image',
+    'gatsby-plugin-gatsby-cloud',
   ],
 };

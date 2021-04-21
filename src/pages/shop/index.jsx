@@ -11,6 +11,7 @@ import {
 import ProductListing from '../../components/ProductListing';
 import { PureLayout as Layout } from '../../components/Layout';
 import { PureSEO as SEO } from '../../components/SEO/SEO';
+import ShopHeader from '../../components/ShopHeader';
 
 export default function ShopIndex({ data }) {
   const { siteUrl, title } = data.site.siteMetadata;
@@ -28,9 +29,10 @@ export default function ShopIndex({ data }) {
   return (
     <>
       <SEO data={data} pageMetadata={pageMetadata} />
-      <Layout data={data}>
+      <ShopHeader />
+      <Layout data={data} showHeader={false}>
+        <Breadcrumbs items={[{ name: 'Home', to: '/home/' }, { name: 'Shop', to: '/shop/' }]} />
         <Flex as="main" direction="column" w="100%" maxW="6xl" align="baseline" px="4">
-          <Breadcrumbs items={[{ name: 'Home', to: '/home/' }, { name: 'Shop', to: '/shop/' }]} />
           <Heading as="h1" size="xl">
             <AudioCore />
             {' '}

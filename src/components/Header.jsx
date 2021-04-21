@@ -23,7 +23,7 @@ import { DESKTOP_BREAKPOINT } from '../constants/sizes';
 
 const HeaderLogo = () => (
   <Flex>
-    <InternalLink ariaLabel="Open Audio Core home page" to="/home" variant="header">
+    <InternalLink ariaLabel="Open Audio Core home page" to="/home/" variant="header">
       <Heading size="xl" my="2">
         <AudioCore />
       </Heading>

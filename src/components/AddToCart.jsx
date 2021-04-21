@@ -16,6 +16,7 @@ const AddToCart = ({
         addVariantToCart(variantId, quantity);
       }}
       disabled={!available || loading}
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     >
       {available ? 'Add to Cart' : 'Currently out of Stock'}
