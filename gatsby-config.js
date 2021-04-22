@@ -8,6 +8,8 @@ const {
   FORMIUM_TOKEN,
   GATSBY_FORMIUM_PROJECTID,
   GATSBY_SHOPIFY_STORE_URL,
+  HTTPBASICAUTH_USERNAME,
+  HTTPBASICAUTH_PASSWORD,
   SHOPIFY_ADMIN_API_KEY,
   SHOPIFY_ADMIN_PASSWORD,
   WORDPRESS_SOURCE_URL,
@@ -136,6 +138,12 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         url: WORDPRESS_SOURCE_URL,
+        auth: {
+          htaccess: {
+            username: HTTPBASICAUTH_USERNAME,
+            password: HTTPBASICAUTH_PASSWORD,
+          },
+        },
       },
     },
     {
