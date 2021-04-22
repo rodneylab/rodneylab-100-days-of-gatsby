@@ -10,9 +10,9 @@ const ProductListing = ({ products }) => {
 
   return (
     <Grid
-      templateColumns={['1fr', 'repeat(2, 1fr)', null, `repeat(${gridColumms}, 1fr)`]}
+      templateColumns={`repeat(${gridColumms}, 1fr)`}
       columnGap={6}
-      rowGap={[12, 16, 20]}
+      rowGap={12}
       mx="auto"
     >
       {products.nodes.map((product) => (

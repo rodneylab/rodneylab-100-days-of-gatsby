@@ -22,7 +22,12 @@ const navigationLinks = [
 ];
 
 const ShopNavigation = () => (
-  <Stack as="nav" direction={['column', 'row']} fontSize="lg" alignItems="center">
+  <Stack
+    as="nav"
+    direction={['column', 'row']}
+    fontSize="lg"
+    alignItems={['flex-start', 'center', 'center', 'center', 'center']}
+  >
     {navigationLinks.map((element) => (
       <Box pl={4}>
         <InternalLink
@@ -37,5 +42,4 @@ const ShopNavigation = () => (
     ))}
   </Stack>
 );
-
 export { ShopNavigation as default };

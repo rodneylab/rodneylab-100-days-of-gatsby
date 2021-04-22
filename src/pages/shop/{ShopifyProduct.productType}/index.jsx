@@ -14,6 +14,7 @@ import {
 import ProductListing from '../../../components/ProductListing';
 import { PureLayout as Layout } from '../../../components/Layout';
 import { PureSEO as SEO } from '../../../components/SEO/SEO';
+import ShopHeader from '../../../components/ShopHeader';
 import { VERTICAL_LINE_ENTITY } from '../../../constants/entities';
 
 export default function ProductTypeIndex({ data, pageContext: { productType } }) {
@@ -32,7 +33,8 @@ export default function ProductTypeIndex({ data, pageContext: { productType } })
   return (
     <>
       <SEO data={data} pageMetadata={pageMetadata} />
-      <Layout data={data}>
+      <ShopHeader />
+      <Layout data={data} showHeader={false}>
         <Breadcrumbs
           items={[
             { name: 'Home', to: '/home/' },
@@ -41,7 +43,7 @@ export default function ProductTypeIndex({ data, pageContext: { productType } })
           ]}
         />
         <Flex as="main" direction="column" w="100%" maxW="6xl" align="baseline" px="4">
-          <Heading as="h1" size="xl">
+          <Heading as="h1" size="lg">
             <AudioCore />
             {` Shop: ${productType}`}
           </Heading>

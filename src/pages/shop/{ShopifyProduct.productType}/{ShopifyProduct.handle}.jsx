@@ -91,8 +91,8 @@ export default function Product({ data, pageContext }) {
   return (
     <>
       <SEO data={data} pageMetadata={pageMetadata} />
-      <Layout data={data}>
-        <ShopHeader />
+      <ShopHeader />
+      <Layout data={data} showHeader={false}>
         <Breadcrumbs
           items={[
             { name: 'Home', to: '/home/' },
@@ -101,7 +101,7 @@ export default function Product({ data, pageContext }) {
             { name: title, to: `/shop/${productType.toLowerCase()}/${handle}` },
           ]}
         />
-        <Flex as="main" direction="column" my={6}>
+        <Flex as="main" direction="column" my={6} px={4}>
           <Heading as="h1" size="lg" mb={6}>
             {title}
           </Heading>
@@ -110,7 +110,9 @@ export default function Product({ data, pageContext }) {
             alt={images[0].product.description}
             image={getImage(images[0].gatsbyImageData)}
           />
-          <Text fontSize="lg" mt={6} mb={4}>{description}</Text>
+          <Text fontSize="lg" mt={6} mb={4}>
+            {description}
+          </Text>
           <Flex align="center" mb={4}>
             <Heading as="h2" size="md" mt={4} pl="auto" mr={2}>
               {price}

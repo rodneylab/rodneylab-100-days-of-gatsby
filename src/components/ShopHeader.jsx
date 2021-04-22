@@ -37,7 +37,10 @@ const ShopHeader = () => {
             <Spacer />
             <Flex>
               {isMobile ? (
-                <MobileMenu quantity={quantity} btnRef={btnRef} onOpen={onOpen} />
+                <>
+                  <CartButton quantity={quantity} onOpen={onOpen} btnRef={btnRef} />
+                  <MobileMenu quantity={quantity} btnRef={btnRef} onOpen={onOpen} />
+                </>
               ) : (
                 <>
                   <ShopNavigation />
@@ -48,7 +51,7 @@ const ShopHeader = () => {
           </Flex>
         </Flex>
       </Flex>
-      <LocalSpacer size="74px" axis="vertical" />
+      <LocalSpacer size="72px" axis="vertical" />
     </>
   );
 };

@@ -21,7 +21,7 @@ const Spacer = ({ size, axis, ...rest }) => {
 };
 
 Spacer.propTypes = {
-  size: PropTypes.number.isRequired,
+  size: PropTypes.string.isRequired,
   axis: PropTypes.string.isRequired,
 };
 
