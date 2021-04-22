@@ -1,6 +1,8 @@
 import React from 'react';
 import { GatsbyImage, getImage, getSrc } from 'gatsby-plugin-image';
-import { Heading } from '@chakra-ui/react';
+import {
+  Box, Flex, Heading, Text,
+} from '@chakra-ui/react';
 import { Link, graphql } from 'gatsby';
 import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
@@ -24,7 +26,9 @@ export default function BlogPostTemplate({ data }) {
     ? featuredImage.node.altText
     : opengraphTitle;
 
-  const { facebookPage, facebookAuthorPage, siteUrl, title, titleAlt, } = data.site.siteMetadata;
+  const {
+    facebookPage, facebookAuthorPage, siteUrl, title,
+  } = data.site.siteMetadata;
   const pageMetadata = {
     featuredImage: {
       alt: featuredImageAltText,
@@ -67,17 +71,30 @@ export default function BlogPostTemplate({ data }) {
           <Heading as="h1" size="xl" my="4">
             {parse(post.title)}
           </Heading>
-          <p>{post.date}</p>
+          <Flex m={4} justifyContent="flex-end">
+            <p>{post.date}</p>
+          </Flex>
           {/* if we have a featured image for this post let's display it */}
           {featuredImage?.node?.localFile?.childImageSharp ? (
-            <GatsbyImage
-              image={getImage(featuredImage?.node?.localFile)}
-              alt={featuredImage.altText}
-              width={992}
-            />
+            <Flex justifyContent="center" w="100%">
+              <GatsbyImage
+                image={getImage(featuredImage?.node?.localFile)}
+                alt={featuredImageAltText}
+                width={992}
+                style={{ paddingLeft: 'auto', paddingRight: 'auto' }}
+              />
+            </Flex>
           ) : null}
         </header>
-        {!!post.content && <section itemProp="articleBody">{parse(post.content)}</section>}
+        {!!post.content && (
+          <section itemProp="articleBody">
+            <Box m={8}>
+              <Text fontSize="lg" sx={{ p: { marginBottom: '1rem' } }}>
+                {parse(post.content)}
+              </Text>
+            </Box>
+          </section>
+        )}
         <hr />
       </article>
 

@@ -59,7 +59,7 @@ Twitter.propTypes = {
     featuredImageAlt: PropTypes.string,
     seoMetaDescription: PropTypes.string,
     siteUrl: PropTypes.string,
-    timeToRead: PropTypes.number,
+    timeToRead: PropTypes.string,
     title: PropTypes.string,
     twitterImage: PropTypes.shape({
       alt: PropTypes.string,

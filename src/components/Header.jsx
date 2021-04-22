@@ -75,6 +75,9 @@ export const PureHeader = ({ data }) => {
             <NavLink ariaLabel="Find out about Audio Core" to="/about/" pr="4">
               <Text textStyle="headerNavItem">About</Text>
             </NavLink>
+            <NavLink ariaLabel="Open AudioC0re blog post" to="/what-obama-cant-stop-dreaming-about/" pr="4">
+              <Text textStyle="headerNavItem">Blog</Text>
+            </NavLink>
             <NavLink ariaLabel="Browse the Audio Core shop" to="/shop/" pr="4">
               <Text textStyle="headerNavItem">Shop</Text>
             </NavLink>
